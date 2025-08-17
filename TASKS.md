@@ -12,11 +12,11 @@
 ## 🎯 Milestone 0: Project Foundation (Week 1-2)
 
 ### Environment Setup
-- [ ] Create GitHub repository with proper .gitignore
+- [✅] Create GitHub repository with proper .gitignore
 - [ ] Initialize monorepo with Yarn workspaces
 - [ ] Setup TypeScript configuration for all packages
 - [ ] Configure ESLint and Prettier
-- [ ] Create folder structure as per PLANNING.md
+- [✅] Create folder structure as per PLANNING.md
 - [ ] Setup VS Code workspace settings
 - [ ] Configure Hebrew keyboard for testing
 
