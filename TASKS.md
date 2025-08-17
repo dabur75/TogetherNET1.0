@@ -13,7 +13,7 @@
 
 ### Environment Setup
 - [✅] Create GitHub repository with proper .gitignore
-- [ ] Initialize monorepo with Yarn workspaces
+- [✅] Initialize monorepo with Yarn workspaces
 - [ ] Setup TypeScript configuration for all packages
 - [ ] Configure ESLint and Prettier
 - [✅] Create folder structure as per PLANNING.md

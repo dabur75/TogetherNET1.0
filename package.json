@@ -1,0 +1,79 @@
+{
+  "name": "togethernet",
+  "version": "0.1.0",
+  "description": "Revolutionary therapeutic platform that rebuilds self-worth through daily emotional deposits",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "firebase/functions"
+  ],
+  "scripts": {
+    "dev": "yarn workspace @togethernet/mobile start",
+    "dev:web": "yarn workspace @togethernet/web dev",
+    "dev:functions": "yarn workspace @togethernet/functions dev",
+    "build": "yarn workspaces run build",
+    "test": "yarn workspaces run test",
+    "lint": "yarn workspaces run lint",
+    "lint:fix": "yarn workspaces run lint:fix",
+    "type-check": "yarn workspaces run type-check",
+    "clean": "yarn workspaces run clean && rm -rf node_modules",
+    "setup": "yarn install && yarn workspace @togethernet/mobile expo install",
+    "firebase:deploy": "yarn workspace @togethernet/functions deploy",
+    "mobile:ios": "yarn workspace @togethernet/mobile ios",
+    "mobile:android": "yarn workspace @togethernet/mobile android",
+    "web:build": "yarn workspace @togethernet/web build",
+    "web:preview": "yarn workspace @togethernet/web preview"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.45.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react": "^7.33.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-native": "^4.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.1.6"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "yarn": ">=1.22.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dabur75/TogetherNET1.0.git"
+  },
+  "keywords": [
+    "therapeutic",
+    "mental-health",
+    "self-worth",
+    "healing",
+    "mindfulness",
+    "gratitude",
+    "react-native",
+    "react",
+    "firebase",
+    "hebrew",
+    "rtl",
+    "israel",
+    "therapy",
+    "depression",
+    "anxiety",
+    "emotional-wellbeing"
+  ],
+  "author": {
+    "name": "Dvir Hillel Cohen Eraki",
+    "email": "dvir@togethernet.app",
+    "url": "https://togethernet.app"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dabur75/TogetherNET1.0/issues"
+  },
+  "homepage": "https://togethernet.app",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/togethernet"
+  }
+}
