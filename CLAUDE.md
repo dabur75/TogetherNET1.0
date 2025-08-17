@@ -15,7 +15,7 @@
 **Founder**: Dvir Hillel Cohen Eraki (Licensed Therapist)  
 **Core Innovation**: Daily deposits that literally rebuild self-worth  
 **Status**: POC Development Ready  
-**Platforms**: Mobile (React Native) + Web (React)  
+**Platform Strategy**: Responsive Web-First with Mobile-Optimized Design (React Native Future Phase)
 **Languages**: Hebrew (RTL) + English  
 
 ## Core Philosophy
@@ -436,30 +436,36 @@ togethernet/
 │   │   └── utils/
 │   │       ├── RTLUtils.ts          # Hebrew support
 │   │       ├── FibonacciUtils.ts    # Streak calculations
+│   │       ├── ResponsiveUtils.ts   # Mobile-first design
 │   │       └── CompoundInterest.ts  # Wealth calculations
 │   │
-│   ├── mobile/                 # React Native app
-│   │   ├── screens/
-│   │   │   ├── HeartBank/           # Core experience
-│   │   │   ├── DailyExercise/       # Morning ritual
-│   │   │   ├── EmergenSee/          # Crisis support
-│   │   │   ├── HealingRow/          # Creative sharing
-│   │   │   └── LoveMarkIt/          # Kindness exchange
-│   │   └── components/
-│   │       ├── Banker/              # AI presence
-│   │       ├── DepositForm/         # Input interface
-│   │       ├── WealthDisplay/       # Balance viz
-│   │       └── GentleReminders/     # Notification system
+│   ├── web/                    # Primary responsive web app
+│   │   ├── pages/
+│   │   │   ├── HeartBank/           # Core mobile-first experience
+│   │   │   ├── DailyExercise/       # Touch-optimized morning ritual
+│   │   │   ├── EmergenSee/          # Mobile crisis support
+│   │   │   ├── HealingRow/          # Mobile creative sharing
+│   │   │   ├── LoveMarkIt/          # Location-based kindness
+│   │   │   ├── CreativeStudio/      # Desktop-enhanced tools
+│   │   │   └── Gallery/             # Responsive showcase
+│   │   ├── components/
+│   │   │   ├── Banker/              # Responsive AI presence
+│   │   │   ├── DepositForm/         # Touch-friendly input
+│   │   │   ├── WealthDisplay/       # Mobile-optimized viz
+│   │   │   ├── EmotionPainter/      # Touch + mouse drawing
+│   │   │   ├── StoryWeaver/         # Mobile + desktop writing
+│   │   │   └── MeditationSpace/     # Mobile breathing guides
+│   │   ├── hooks/
+│   │   │   ├── useResponsive.ts     # Breakpoint management
+│   │   │   ├── useTouchGestures.ts  # Mobile interactions
+│   │   │   └── usePWA.ts            # Progressive web app
+│   │   └── pwa/
+│   │       ├── manifest.json        # App installation
+│   │       ├── service-worker.ts    # Offline support
+│   │       └── push-notifications/  # Mobile notifications
 │   │
-│   └── web/                    # React web app
-│       ├── pages/
-│       │   ├── HeartBank/           # Expanded view
-│       │   ├── CreativeStudio/      # Art tools
-│       │   └── Gallery/             # Community showcase
-│       └── components/
-│           ├── EmotionPainter/      # Drawing tool
-│           ├── StoryWeaver/         # Narrative builder
-│           └── MeditationSpace/     # Calming experiences
+│   └── mobile/                 # Future React Native (Phase 2)
+│       └── README.md           # "Coming in Phase 2" placeholder
 │
 ├── firebase/
 │   ├── functions/              # Cloud functions
@@ -562,7 +568,7 @@ interface Collections {
 }
 ```
 
-### Tech Stack
+### Tech Stack (Web-First Mobile-Responsive)
 
 ```javascript
 // Shared Dependencies
@@ -573,78 +579,165 @@ interface Collections {
   "i18next": "^23.0.0",     // Internationalization
 }
 
-// Mobile (React Native)
-{
-  "react-native": "0.72.0",
-  "expo": "~49.0.0",
-  "@react-navigation/native": "^6.0.0",
-  "react-native-reanimated": "^3.0.0",  // Animations
-  "expo-notifications": "^0.20.0",       // Reminders
-  "react-native-gesture-handler": "^2.0.0",
-  "react-native-i18n": "^2.0.0",        // Hebrew RTL
-}
-
-// Web (React)
+// Primary Web Platform (Mobile-First Responsive)
 {
   "react": "^18.0.0",
-  "framer-motion": "^10.0.0",    // Animations
-  "three.js": "^0.155.0",        // 3D visualizations
-  "konva": "^9.0.0",             // Drawing tools
-  "tone.js": "^14.0.0",          // Sound therapy
-  "tailwindcss": "^3.0.0",
-  "@emotion/styled": "^11.0.0",
+  "react-dom": "^18.0.0",
+  "vite": "^5.0.0",              // Fast mobile builds
+  "vite-plugin-pwa": "^0.17.0",  // Progressive Web App
+  "tailwindcss": "^3.0.0",       // Mobile-first CSS
+  "@emotion/styled": "^11.0.0",   // Dynamic responsive styling
+  "framer-motion": "^10.0.0",     // Touch-friendly animations
+  
+  // Mobile Web Optimizations
+  "react-use-gesture": "^9.0.0", // Touch gestures
+  "react-intersection-observer": "^9.0.0", // Performance
+  "workbox-webpack-plugin": "^7.0.0", // Service worker
+  
+  // Enhanced Creative Tools (Desktop)
+  "konva": "^9.0.0",             // Touch + mouse drawing
+  "three.js": "^0.155.0",        // Desktop 3D visualizations
+  "tone.js": "^14.0.0",          // Audio therapy
+  
+  // Mobile-First Responsive
+  "react-responsive": "^10.0.0", // Breakpoint hooks
+  "@react-hook/window-size": "^3.0.0", // Mobile sizing
+}
+
+// Future React Native (Phase 2)
+{
+  // Phase 2: Native mobile apps
+  // Will reuse all shared business logic
+  // Focus on platform-specific optimizations
 }
 ```
 
-## Development Priorities
+## Development Priorities (Web-First Mobile-Responsive)
 
-### Phase 1: HeartBank Core (Weeks 1-3)
+### Phase 1: Mobile-First HeartBank Core (Weeks 1-3)
 ```typescript
-// Priority tasks
+// Priority tasks - Mobile-first responsive design
 const phase1 = {
-  1: "Daily exercise system with 30 seed exercises",
-  2: "Deposit form with 5 categories + banker responses",
-  3: "Balance calculation and visual display",
-  4: "Streak tracking with Fibonacci rewards",
-  5: "Hebrew RTL perfect implementation",
-  6: "Gentle reminder notifications",
-  7: "Private vs public toggle",
-  8: "Compound interest calculation system"
+  1: "Mobile-responsive daily exercise system with touch optimization",
+  2: "Touch-friendly deposit form with 5 categories + banker responses",
+  3: "Mobile-optimized balance calculation and visual display",
+  4: "Touch-friendly streak tracking with Fibonacci rewards",
+  5: "Perfect Hebrew RTL on mobile devices",
+  6: "PWA push notifications for gentle reminders",
+  7: "Mobile-friendly private vs public toggle",
+  8: "Responsive compound interest visualization"
 };
 ```
 
-### Phase 2: Supporting Systems (Weeks 4-6)
+### Phase 2: PWA & Enhanced Mobile Features (Weeks 4-6)
 ```typescript
 const phase2 = {
-  1: "Emergen-See crisis button and flow",
-  2: "HealingRow story sharing and circles",
-  3: "Love-Mark-It basic kindness board",
-  4: "TogetherNet unified feed",
-  5: "Pipeline transition logic",
-  6: "Community reactions system",
-  7: "Radical transparency dashboard"
+  1: "Progressive Web App setup (installable, offline-capable)",
+  2: "Mobile-optimized Emergen-See crisis button and flow",
+  3: "Touch-friendly HealingRow story sharing",
+  4: "Location-aware Love-Mark-It kindness board",
+  5: "Mobile-first TogetherNet unified feed",
+  6: "Touch gesture navigation and interactions",
+  7: "Mobile performance optimizations"
+};
+```
+
+### Phase 3: Desktop Enhancement (Weeks 7-9)
+```typescript
+const phase3 = {
+  1: "Desktop-enhanced creative studio tools",
+  2: "Advanced visualization for larger screens",
+  3: "Keyboard shortcuts and desktop interactions",
+  4: "Multi-window support for desktop users",
+  5: "Cross-device sync and handoff",
+  6: "Enhanced analytics dashboard for desktop"
 };
 ```
 
 ## Critical Implementation Details
 
-### Hebrew RTL Support
+### Mobile-First Design Principles
 ```typescript
-// Every component must handle RTL
-import { I18nManager } from 'react-native';
+// Core mobile-first approaches
+const mobileFirstPrinciples = {
+  touchTargets: {
+    minimumSize: "44px x 44px",  // Apple/Google recommendations
+    spacing: "8px minimum between targets",
+    feedback: "Immediate visual/haptic response"
+  },
+  
+  responsive: {
+    breakpoints: {
+      mobile: "320px - 768px",    // Primary focus
+      tablet: "768px - 1024px",   // Enhanced experience
+      desktop: "1024px+",         // Advanced features
+    },
+    approach: "Mobile-first CSS with progressive enhancement"
+  },
+  
+  performance: {
+    initialLoad: "< 2 seconds on 3G",
+    interactivity: "< 100ms touch response",
+    bundleSize: "< 1MB initial payload",
+    images: "WebP with fallbacks, lazy loading"
+  },
+  
+  gestures: {
+    swipe: "Navigation and dismissal",
+    pinch: "Zoom for accessibility",
+    pull: "Refresh content",
+    tap: "Primary interactions"
+  },
+  
+  PWA: {
+    installable: "Add to home screen prompt",
+    offline: "Core HeartBank functionality available offline",
+    notifications: "Gentle reminders via service worker",
+    updates: "Background updates with user notification"
+  }
+};
+```
 
+### Hebrew RTL Support (Mobile-Web Responsive)
+```typescript
+// Web-based RTL support with mobile optimization
 const useRTL = () => {
   const { language } = useContext(LanguageContext);
   const isRTL = language === 'he';
   
   useEffect(() => {
-    I18nManager.forceRTL(isRTL);
+    // Set document direction for proper mobile keyboard and input behavior
+    document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+    document.documentElement.lang = isRTL ? 'he' : 'en';
   }, [isRTL]);
   
   return {
+    dir: isRTL ? 'rtl' : 'ltr',
     textAlign: isRTL ? 'right' : 'left',
-    flexDirection: isRTL ? 'row-reverse' : 'row',
-    writingDirection: isRTL ? 'rtl' : 'ltr',
+    css: css`
+      direction: ${isRTL ? 'rtl' : 'ltr'};
+      text-align: ${isRTL ? 'right' : 'left'};
+      
+      /* Mobile-specific RTL optimizations */
+      @media (max-width: 768px) {
+        /* Ensure touch targets work correctly in RTL */
+        input, textarea {
+          text-align: ${isRTL ? 'right' : 'left'};
+          direction: ${isRTL ? 'rtl' : 'ltr'};
+        }
+        
+        /* Mobile navigation RTL */
+        .mobile-nav {
+          flex-direction: ${isRTL ? 'row-reverse' : 'row'};
+        }
+        
+        /* Hebrew mobile fonts */
+        font-family: ${isRTL ? 
+          'system-ui, -apple-system, "Segoe UI", "Noto Sans Hebrew"' : 
+          'system-ui, -apple-system, "Segoe UI"'
+        };
+      }
+    `,
     isRTL
   };
 };
@@ -851,7 +944,7 @@ const donationTiers = {
 };
 ```
 
-## Testing Checklist
+## Testing Checklist (Mobile-First Responsive)
 
 ### Core HeartBank Functions
 - [ ] Daily exercise publishes at 6 AM Israel time
@@ -860,31 +953,46 @@ const donationTiers = {
 - [ ] Balance calculates correctly with compound interest
 - [ ] Streaks track with Fibonacci rewards (3, 8, 21, 55, 89)
 - [ ] Interest compounds daily automatically
-- [ ] Gentle reminders send appropriately (morning/afternoon/evening)
-- [ ] Private/public toggle works correctly
+- [ ] PWA push notifications work for gentle reminders
+- [ ] Private/public toggle works on mobile and desktop
 - [ ] Banker responses feel therapeutic, not robotic
 
-### Hebrew Support
-- [ ] RTL layout displays perfectly across all screens
-- [ ] Hebrew exercises feel native, not translated
-- [ ] Banker responses culturally appropriate for Israeli users
-- [ ] No text truncation issues with Hebrew characters
-- [ ] Proper date/time formatting in Hebrew locale
-- [ ] Navigation flows right-to-left correctly
+### Mobile-First Responsive Design
+- [ ] All touch targets are minimum 44px x 44px
+- [ ] App works perfectly on iPhone 12/13/14 (375px width)
+- [ ] App works perfectly on Samsung Galaxy (360px width)
+- [ ] Touch gestures (swipe, pinch, tap) work intuitively
+- [ ] Mobile keyboards don't break layout
+- [ ] Landscape mode works on mobile devices
+- [ ] Tablet experience (768px+) enhances mobile features
+- [ ] Desktop experience (1024px+) adds advanced tools
 
-### Pipeline Integration
-- [ ] Emergen-See crisis detection works in both languages
-- [ ] HealingRow creative sharing integrates with deposits
-- [ ] Love-Mark-It requires minimum deposits before access
-- [ ] TogetherNet feed shows cross-pipeline inspiration
-- [ ] Pipeline transitions feel natural, not forced
+### Progressive Web App (PWA)
+- [ ] App installs correctly on mobile home screen
+- [ ] Offline functionality works for core HeartBank features
+- [ ] Push notifications arrive at correct times
+- [ ] Service worker updates in background without disruption
+- [ ] App icon and splash screen appear correctly
+- [ ] Performance score >90 on mobile Lighthouse
+- [ ] Works in airplane mode for deposit reading/writing
 
-### User Experience
-- [ ] Daily deposit takes less than 5 minutes to complete
-- [ ] Banker feels genuinely therapeutic and supportive
-- [ ] No addictive patterns or manipulation tactics
-- [ ] Natural stopping points after 3-5 feed items
-- [ ] Celebrations feel genuine, not gamified
+### Hebrew Mobile Support  
+- [ ] RTL layout displays perfectly on mobile screens
+- [ ] Hebrew text input works correctly on mobile keyboards
+- [ ] Hebrew exercises feel native on mobile devices
+- [ ] Banker responses culturally appropriate on small screens
+- [ ] No text truncation issues with Hebrew on mobile
+- [ ] Proper date/time formatting in Hebrew on mobile
+- [ ] Mobile navigation flows right-to-left correctly
+
+### Mobile User Experience
+- [ ] Daily deposit completes in <3 minutes on mobile
+- [ ] Touch interactions feel natural and responsive
+- [ ] Loading states never exceed 2 seconds on 3G
+- [ ] No horizontal scrolling on any mobile screen
+- [ ] Banker presence feels warm on small screens
+- [ ] Mobile notifications are gentle, not intrusive
+- [ ] Crisis button easily accessible with thumb navigation
 
 ## Success Metrics to Track
 

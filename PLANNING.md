@@ -54,7 +54,7 @@ When someone in Tel Aviv opens HeartBank each morning excited to see their exerc
 └───────────────────────────────────────────────────────────────┘
 ```
 
-### Monorepo Structure
+### Monorepo Structure (Web-First Mobile-Responsive)
 ```
 togethernet/
 ├── packages/
@@ -64,58 +64,69 @@ togethernet/
 │   │   │   ├── ExerciseService.ts    # Daily exercise engine
 │   │   │   ├── WealthService.ts      # Balance & compound interest
 │   │   │   ├── DepositService.ts     # Deposit management
-│   │   │   ├── ReminderService.ts    # Gentle notifications
+│   │   │   ├── ReminderService.ts    # PWA notifications
 │   │   │   └── CrisisService.ts      # Emergency support
 │   │   ├── types/
 │   │   │   ├── Deposit.ts
 │   │   │   ├── Exercise.ts
 │   │   │   ├── User.ts
 │   │   │   ├── Wealth.ts
-│   │   │   └── Crisis.ts
+│   │   │   ├── Crisis.ts
+│   │   │   └── PWA.ts                # Progressive Web App types
 │   │   ├── utils/
-│   │   │   ├── RTLUtils.ts           # Hebrew RTL support
+│   │   │   ├── RTLUtils.ts           # Hebrew mobile RTL support
 │   │   │   ├── FibonacciUtils.ts     # Streak calculations
 │   │   │   ├── DateUtils.ts          # Timezone handling
-│   │   │   └── ValidationUtils.ts    # Input validation
+│   │   │   ├── ValidationUtils.ts    # Input validation
+│   │   │   ├── ResponsiveUtils.ts    # Mobile-first breakpoints
+│   │   │   └── TouchUtils.ts         # Mobile gesture handling
 │   │   └── constants/
 │   │       ├── BankerResponses.ts    # 200+ responses
 │   │       ├── Exercises.ts          # 365 daily exercises
-│   │       └── Colors.ts             # Design system
+│   │       ├── Colors.ts             # Mobile-first design system
+│   │       └── Breakpoints.ts        # Responsive breakpoints
 │   │
-│   ├── mobile/                  # React Native App
-│   │   ├── ios/
-│   │   ├── android/
+│   ├── web/                     # Primary Progressive Web App
+│   │   ├── public/
+│   │   │   ├── manifest.json         # PWA manifest
+│   │   │   ├── sw.js                 # Service worker
+│   │   │   └── icons/                # Mobile app icons
 │   │   ├── src/
-│   │   │   ├── screens/
-│   │   │   │   ├── HeartBank/
-│   │   │   │   ├── DailyExercise/
-│   │   │   │   ├── EmergenSee/
-│   │   │   │   ├── HealingRow/
-│   │   │   │   ├── LoveMarkIt/
-│   │   │   │   └── TogetherNet/
+│   │   │   ├── pages/
+│   │   │   │   ├── HeartBank/        # Mobile-first core experience
+│   │   │   │   ├── DailyExercise/    # Touch-optimized exercises
+│   │   │   │   ├── EmergenSee/       # Mobile crisis support
+│   │   │   │   ├── HealingRow/       # Mobile creative sharing
+│   │   │   │   ├── LoveMarkIt/       # Location-aware kindness
+│   │   │   │   ├── CreativeStudio/   # Desktop-enhanced tools
+│   │   │   │   ├── Gallery/          # Responsive showcase
+│   │   │   │   └── Treasury/         # Mobile-optimized archives
 │   │   │   ├── components/
-│   │   │   │   ├── Banker/
-│   │   │   │   ├── DepositForm/
-│   │   │   │   ├── StreakDisplay/
-│   │   │   │   └── WealthVisualization/
-│   │   │   └── navigation/
-│   │   └── app.json
+│   │   │   │   ├── Banker/           # Responsive AI presence
+│   │   │   │   ├── DepositForm/      # Touch-friendly input
+│   │   │   │   ├── StreakDisplay/    # Mobile-optimized streaks
+│   │   │   │   ├── WealthVisualization/ # Responsive charts
+│   │   │   │   ├── EmotionPainter/   # Touch + mouse drawing
+│   │   │   │   ├── StoryWeaver/      # Mobile + desktop writing
+│   │   │   │   ├── MeditationSpace/  # Mobile breathing guides
+│   │   │   │   └── PWAComponents/    # Installation, notifications
+│   │   │   ├── hooks/
+│   │   │   │   ├── useResponsive.ts  # Breakpoint management
+│   │   │   │   ├── useTouchGestures.ts # Mobile interactions
+│   │   │   │   ├── usePWA.ts         # Service worker, install
+│   │   │   │   └── useOffline.ts     # Offline functionality
+│   │   │   ├── styles/
+│   │   │   │   ├── mobile-first.css  # Mobile-first base styles
+│   │   │   │   ├── responsive.css    # Breakpoint-specific styles
+│   │   │   │   └── rtl-mobile.css    # Hebrew mobile optimizations
+│   │   │   └── pwa/
+│   │   │       ├── service-worker.ts # Offline & caching
+│   │   │       ├── notifications.ts  # Push notifications
+│   │   │       └── install.ts        # Installation prompts
+│   │   └── package.json
 │   │
-│   └── web/                     # React Web App
-│       ├── public/
-│       ├── src/
-│       │   ├── pages/
-│       │   │   ├── HeartBank/
-│       │   │   ├── CreativeStudio/
-│       │   │   ├── Gallery/
-│       │   │   └── Treasury/
-│       │   ├── components/
-│       │   │   ├── EmotionPainter/
-│       │   │   ├── StoryWeaver/
-│       │   │   ├── MeditationSpace/
-│       │   │   └── GratitudeGarden/
-│       │   └── styles/
-│       └── package.json
+│   └── mobile/                  # Future React Native (Phase 2)
+│       └── README.md            # "Coming in Phase 2" placeholder
 │
 ├── firebase/                    # Backend Services
 │   ├── functions/
@@ -153,34 +164,43 @@ togethernet/
 
 ## 💻 Technology Stack
 
-### Core Technologies
+### Core Technologies (Web-First Mobile-Responsive)
 
-#### Frontend - Mobile
-```json
-{
-  "framework": "React Native with Expo",
-  "language": "TypeScript",
-  "navigation": "@react-navigation/native",
-  "state": "Zustand",
-  "animations": "react-native-reanimated",
-  "notifications": "expo-notifications",
-  "styling": "StyleSheet + styled-components",
-  "testing": "Jest + React Native Testing Library"
-}
-```
-
-#### Frontend - Web
+#### Primary Frontend - Progressive Web App
 ```json
 {
   "framework": "React 18",
   "language": "TypeScript",
   "routing": "React Router v6",
   "state": "Zustand",
-  "animations": "Framer Motion + Three.js",
-  "canvas": "Konva.js",
-  "audio": "Tone.js",
-  "styling": "Emotion + Tailwind CSS",
-  "testing": "Jest + React Testing Library"
+  "styling": "Emotion + Tailwind CSS (mobile-first)",
+  "animations": "Framer Motion (touch-optimized)",
+  "PWA": "Vite PWA Plugin + Workbox",
+  "mobile": {
+    "gestures": "react-use-gesture",
+    "responsive": "react-responsive",
+    "touch": "pointer events + touch-action CSS",
+    "performance": "react-intersection-observer",
+    "offline": "service worker + IndexedDB"
+  },
+  "desktop": {
+    "canvas": "Konva.js (touch + mouse)",
+    "3D": "Three.js + React Three Fiber",
+    "audio": "Tone.js"
+  },
+  "notifications": "Push API + Service Worker",
+  "testing": "Jest + React Testing Library + Cypress"
+}
+```
+
+#### Future React Native (Phase 2)
+```json
+{
+  "timeline": "After PWA validation (3-6 months)",
+  "approach": "Reuse shared business logic",
+  "focus": "Platform-specific optimizations",
+  "framework": "React Native with Expo",
+  "advantage": "Proven concept + faster development"
 }
 ```
 
@@ -212,42 +232,59 @@ togethernet/
 }
 ```
 
-#### Mobile Dependencies
-```json
-{
-  "react-native": "0.72.0",
-  "expo": "~49.0.0",
-  "@react-navigation/native": "^6.1.0",
-  "@react-navigation/stack": "^6.3.0",
-  "react-native-screens": "~3.22.0",
-  "react-native-safe-area-context": "4.6.3",
-  "react-native-gesture-handler": "~2.12.0",
-  "react-native-reanimated": "~3.3.0",
-  "expo-notifications": "~0.20.1",
-  "expo-linear-gradient": "~12.3.0",
-  "expo-haptics": "~12.4.0",
-  "@expo/vector-icons": "^13.0.0",
-  "zustand": "^4.4.0",
-  "styled-components": "^6.1.0"
-}
-```
-
-#### Web Dependencies
+#### Primary Web (Progressive Web App) Dependencies
 ```json
 {
   "react": "^18.2.0",
   "react-dom": "^18.2.0",
   "react-router-dom": "^6.20.0",
-  "framer-motion": "^10.16.0",
-  "three": "^0.159.0",
-  "@react-three/fiber": "^8.15.0",
-  "konva": "^9.3.0",
-  "react-konva": "^18.2.0",
-  "tone": "^14.7.0",
-  "tailwindcss": "^3.3.0",
-  "@emotion/react": "^11.11.0",
-  "@emotion/styled": "^11.11.0",
-  "vite": "^5.0.0"
+  
+  "build": {
+    "vite": "^5.0.0",
+    "vite-plugin-pwa": "^0.17.0",
+    "workbox-webpack-plugin": "^7.0.0"
+  },
+  
+  "styling": {
+    "tailwindcss": "^3.3.0",
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0"
+  },
+  
+  "mobile-optimizations": {
+    "react-use-gesture": "^10.3.0",
+    "react-responsive": "^10.0.0",
+    "react-intersection-observer": "^9.5.0",
+    "@react-hook/window-size": "^3.1.0",
+    "framer-motion": "^10.16.0"
+  },
+  
+  "PWA": {
+    "workbox-window": "^7.0.0",
+    "web-push": "^3.6.0",
+    "idb": "^7.1.0"
+  },
+  
+  "desktop-enhancements": {
+    "three": "^0.159.0",
+    "@react-three/fiber": "^8.15.0",
+    "konva": "^9.3.0",
+    "react-konva": "^18.2.0",
+    "tone": "^14.7.0"
+  },
+  
+  "state-management": {
+    "zustand": "^4.4.0"
+  }
+}
+```
+
+#### Future React Native Dependencies (Phase 2)
+```json
+{
+  "note": "Will be added in Phase 2 after PWA validation",
+  "approach": "Reuse shared business logic from packages/shared",
+  "timeline": "3-6 months after web POC success"
 }
 ```
 
@@ -370,60 +407,78 @@ npm install -g source-map-explorer
 
 ---
 
-## 📅 Development Phases
+## 📅 Development Phases (Web-First Mobile-Responsive)
 
-### Phase 0: Foundation (Current)
-**Week 1-2: Core Setup**
+### Phase 0: Mobile-First Foundation (Week 1-2)
+**Core Setup with Mobile Priority**
 - [x] Project structure setup
-- [x] Firebase project creation
+- [x] Firebase project creation  
 - [x] TypeScript configuration
-- [ ] Monorepo setup with Yarn workspaces
-- [ ] Basic navigation structure
-- [ ] Hebrew RTL configuration
+- [x] Monorepo setup with Yarn workspaces
+- [x] Web foundation with responsive breakpoints
+- [x] Hebrew RTL mobile optimization
+- [ ] PWA basic setup (manifest, service worker)
+- [ ] Mobile testing on real devices
 
-### Phase 1: HeartBank Core
-**Week 3-5: The Transformative Engine**
-- [ ] Daily exercise system (30 exercises)
-- [ ] Deposit form with 5 categories
-- [ ] Banker AI responses (100+ contexts)
-- [ ] Streak system (Fibonacci)
-- [ ] Balance & compound interest
-- [ ] Gentle reminder notifications
-- [ ] Private/public toggle
+### Phase 1: Mobile-First HeartBank Core (Week 3-5)
+**The Transformative Engine - Touch-Optimized**
+- [x] HeartBank page structure with mobile-first design
+- [ ] Touch-friendly daily exercise system (30 exercises)
+- [ ] Mobile-responsive deposit form with 5 categories (partially done)
+- [ ] Banker AI responses (100+ contexts) optimized for small screens
+- [ ] Touch-friendly streak system (Fibonacci)
+- [ ] Mobile-optimized balance & compound interest visualization
+- [ ] PWA push notifications for gentle reminders
+- [ ] Mobile-friendly private/public toggle
+- [ ] Offline functionality for core features
 
-### Phase 2: Crisis & Community
-**Week 6-7: Support Systems**
-- [ ] Emergen-See crisis button
-- [ ] Crisis detection patterns
-- [ ] HealingRow story sharing
-- [ ] Basic creative tools
-- [ ] Love-Mark-It board
-- [ ] Safety protocols
+### Phase 2: PWA & Enhanced Mobile Features (Week 6-7)
+**Progressive Web App Excellence**
+- [ ] Full PWA implementation (installable, offline-capable)
+- [ ] Mobile-optimized Emergen-See crisis button
+- [ ] Touch-friendly crisis detection patterns
+- [ ] Mobile-first HealingRow story sharing
+- [ ] Touch gesture navigation
+- [ ] Location-aware Love-Mark-It board
+- [ ] Mobile performance optimizations
+- [ ] Push notification system
 
-### Phase 3: TogetherNet Feed
-**Week 8-9: Bringing It Together**
-- [ ] Feed algorithm (Hearts Rising)
-- [ ] Reaction system
-- [ ] Echo comments (50 words)
-- [ ] Anti-addiction features
-- [ ] Treasury of Light archive
+### Phase 3: Responsive Enhancement & Desktop Features (Week 8-9)
+**Cross-Device Experience**
+- [ ] Desktop-enhanced creative tools (Emotion Painter, Story Weaver)
+- [ ] Responsive TogetherNet feed (Hearts Rising algorithm)
+- [ ] Touch + mouse interaction optimization
+- [ ] Advanced visualization for larger screens
+- [ ] Keyboard shortcuts for desktop users
+- [ ] Multi-screen responsive layouts
+- [ ] Cross-device sync capabilities
 
-### Phase 4: Web Experience
-**Week 10-11: Creative Sanctuary**
-- [ ] Web app setup
-- [ ] Emotion Painter tool
-- [ ] Story Weaver
-- [ ] Meditation spaces
-- [ ] Gallery layouts
-- [ ] Cross-platform sync
+### Phase 4: Advanced Features & Polish (Week 10-11)
+**Pro Features & Optimization**
+- [ ] Advanced desktop creative studio tools
+- [ ] 3D visualizations for desktop (Three.js)
+- [ ] Audio therapy features (Tone.js)
+- [ ] Advanced analytics dashboard
+- [ ] Performance optimization across all devices
+- [ ] Accessibility compliance (WCAG 2.1)
+- [ ] Advanced PWA features (background sync, etc.)
 
-### Phase 5: Launch Preparation
-**Week 12: Final Polish**
-- [ ] Performance optimization
-- [ ] Security audit
-- [ ] Beta tester onboarding
+### Phase 5: Launch Preparation (Week 12)
+**Production Ready**
+- [ ] Mobile performance audit (Lighthouse score >90)
+- [ ] Security audit and penetration testing
+- [ ] Beta tester onboarding (mobile-first)
 - [ ] Documentation complete
-- [ ] Deployment pipeline
+- [ ] Production deployment pipeline
+- [ ] App store optimization (PWA listing)
+
+### Future Phase: React Native (Months 3-6)
+**Native Mobile Apps - After PWA Validation**
+- [ ] React Native project setup
+- [ ] Reuse shared business logic
+- [ ] Platform-specific optimizations
+- [ ] App store submissions
+- [ ] Native mobile features (camera, contacts, etc.)
 
 ---
 

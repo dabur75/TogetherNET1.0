@@ -1,0 +1,115 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper functions for user authentication and authorization
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    
+    function isValidUser() {
+      return isAuthenticated() && 
+             request.auth.uid != null && 
+             request.auth.uid.size() > 0;
+    }
+    
+    // User profiles - users can only access their own data
+    match /users/{userId} {
+      allow read, write: if isOwner(userId);
+      allow create: if isValidUser() && request.auth.uid == userId;
+    }
+    
+    // HeartBank wealth data - strictly private
+    match /heartbank/{userId} {
+      allow read, write: if isOwner(userId);
+      allow create: if isValidUser() && request.auth.uid == userId;
+    }
+    
+    // Deposits - private by default, public readable if marked public
+    match /deposits/{depositId} {
+      allow read: if isOwner(resource.data.userId) || 
+                     (resource.data.isPublic == true && isAuthenticated());
+      allow write: if isOwner(resource.data.userId);
+      allow create: if isValidUser() && 
+                       request.auth.uid == request.resource.data.userId &&
+                       request.resource.data.keys().hasAll(['userId', 'category', 'content', 'isPublic']);
+    }
+    
+    // Daily exercises - readable by all authenticated users
+    match /exercises/{exerciseId} {
+      allow read: if isAuthenticated();
+      allow write: if false; // Only server can write exercises
+    }
+    
+    // Crisis support data - highly protected, only user access
+    match /emergensee/{recordId} {
+      allow read, write: if isOwner(resource.data.userId);
+      allow create: if isValidUser() && 
+                       request.auth.uid == request.resource.data.userId;
+    }
+    
+    // HealingRow creative content
+    match /healingrow/{contentId} {
+      allow read: if isAuthenticated() && 
+                     (isOwner(resource.data.userId) || resource.data.isPublic == true);
+      allow write: if isOwner(resource.data.userId);
+      allow create: if isValidUser() && 
+                       request.auth.uid == request.resource.data.userId;
+    }
+    
+    // Love-Mark-It kindness exchanges
+    match /lovemarkit/{exchangeId} {
+      allow read: if isAuthenticated() && 
+                     (resource.data.status == 'open' || 
+                      request.auth.uid in [resource.data.giver, resource.data.receiver]);
+      allow write: if isAuthenticated() && 
+                      (isOwner(resource.data.giver) || isOwner(resource.data.receiver));
+      allow create: if isValidUser() && 
+                       request.auth.uid == request.resource.data.giver;
+    }
+    
+    // Community feed and reactions
+    match /reactions/{reactionId} {
+      allow read: if isAuthenticated();
+      allow write: if isOwner(resource.data.userId);
+      allow create: if isValidUser() && 
+                       request.auth.uid == request.resource.data.userId;
+    }
+    
+    // Comments on deposits (Echo system)
+    match /comments/{commentId} {
+      allow read: if isAuthenticated();
+      allow write: if isOwner(resource.data.userId);
+      allow create: if isValidUser() && 
+                       request.auth.uid == request.resource.data.userId &&
+                       request.resource.data.content.size() <= 250; // 50 words ≈ 250 chars
+    }
+    
+    // Financial transparency data - publicly readable
+    match /transparency/{monthId} {
+      allow read: if true; // Public financial transparency
+      allow write: if false; // Only server can update
+    }
+    
+    // User verification and safety data
+    match /verification/{userId} {
+      allow read: if isOwner(userId);
+      allow write: if false; // Only server can verify users
+    }
+    
+    // Admin and moderation (future use)
+    match /moderation/{recordId} {
+      allow read, write: if false; // Only server functions
+    }
+    
+    // Deny all other access
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
