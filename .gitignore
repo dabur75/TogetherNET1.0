@@ -1,0 +1,308 @@
+# TogetherNet - Therapeutic Platform .gitignore
+# Protecting user privacy and platform security
+
+# ========================================
+# Dependencies and Package Managers
+# ========================================
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.npm
+.yarn-integrity
+.pnp.*
+
+# Package-lock files (using Yarn workspaces)
+package-lock.json
+
+# ========================================
+# Environment Variables & Secrets
+# ========================================
+
+# Environment files (contain Firebase keys and secrets)
+.env
+.env.local
+.env.development
+.env.staging
+.env.production
+.env.test
+
+# Firebase configuration files with secrets
+firebase-config.js
+firebase-config.ts
+google-services.json
+GoogleService-Info.plist
+firebase-debug.log
+firebase-debug.*.log
+
+# ========================================
+# React Native & Mobile Development
+# ========================================
+
+# iOS
+ios/build/
+ios/Pods/
+ios/Podfile.lock
+*.mode1v3
+*.mode2v3
+*.pbxuser
+*.perspectivev3
+xcuserdata/
+*.xccheckout
+*.xcscmblueprint
+DerivedData/
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Android
+android/app/build/
+android/app/release/
+android/.gradle/
+android/captures/
+android/gradlew
+android/gradlew.bat
+android/local.properties
+*.apk
+*.aab
+*.keystore
+key.properties
+
+# React Native
+.react-native/
+metro-cache/
+.expo/
+.expo-shared/
+dist/
+web-build/
+
+# ========================================
+# Web Development
+# ========================================
+
+# Build outputs
+build/
+dist/
+out/
+.next/
+.nuxt/
+.vuepress/dist
+.serverless/
+
+# Vite
+.vite/
+
+# ========================================
+# Development Tools & IDEs
+# ========================================
+
+# VSCode
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# IntelliJ / WebStorm
+.idea/
+*.swp
+*.swo
+*~
+
+# Vim
+*.swp
+*.swo
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# ========================================
+# Operating Systems
+# ========================================
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# ========================================
+# Logs and Debugging
+# ========================================
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+.nyc_output
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# ========================================
+# Testing
+# ========================================
+
+# Test results
+.coverage/
+coverage/
+.jest/
+.cache/
+
+# ========================================
+# Cloud Functions & Backend
+# ========================================
+
+# Firebase Functions
+functions/node_modules/
+functions/lib/
+functions/.env
+
+# Cloud functions runtime
+.gcloud/
+
+# ========================================
+# Documentation & Media
+# ========================================
+
+# Generated documentation
+docs/build/
+docs/.vuepress/dist
+docs/.vitepress/dist
+
+# Media files that shouldn't be committed
+*.mov
+*.mp4
+*.avi
+*.mkv
+*.webm
+
+# Large assets
+*.psd
+*.ai
+*.sketch
+
+# ========================================
+# Temporary Files
+# ========================================
+
+# Temporary folders
+tmp/
+temp/
+.tmp/
+.temp/
+
+# Lock files
+*.lock
+yarn.lock.frozen
+
+# ========================================
+# Personal & Sensitive Data
+# ========================================
+
+# User data exports
+user-data/
+exports/
+backups/
+
+# Personal notes and todos
+personal-notes.md
+todo.txt
+*.personal
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# ========================================
+# Build Tools & Bundlers
+# ========================================
+
+# Webpack
+.webpack/
+
+# Rollup
+.rollup.cache/
+
+# Parcel
+.parcel-cache/
+
+# ========================================
+# Deployment
+# ========================================
+
+# Deployment artifacts
+*.tgz
+*.tar.gz
+*.zip
+
+# Vercel
+.vercel
+
+# Netlify
+.netlify/
+
+# ========================================
+# Miscellaneous
+# ========================================
+
+# MacOS network storage
+.AppleDouble
+.LSOverride
+
+# Windows network storage
+Network Trash Folder
+Temporary Items
+
+# File system watchers
+.watchmanconfig
+
+# GraphQL generated files
+schema.json
+schema.graphql
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# ESLint cache
+.eslintcache
+
+# Prettier cache
+.prettiercache
+
+# Stylelint cache
+.stylelintcache
