@@ -13,11 +13,11 @@ export default defineConfig({
     }),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
+      includeAssets: ['favicon.ico', 'pwa-192x192.png', 'pwa-512x512.png'],
       manifest: {
-        name: 'TogetherNet - Healing Hearts',
-        short_name: 'TogetherNet',
-        description: 'Revolutionary therapeutic platform that rebuilds self-worth through daily emotional deposits',
+        name: 'מרושתים - TogetherNet | Healing Hearts',
+        short_name: 'מרושתים',
+        description: 'מרושתים - פלטפורמת טיפול מהפכנית הבונה מחדש ערך עצמי דרך הפקדות יומיות | Revolutionary therapeutic platform that rebuilds self-worth through daily emotional deposits',
         theme_color: '#FFD700',
         background_color: '#FAFAFA',
         display: 'standalone',

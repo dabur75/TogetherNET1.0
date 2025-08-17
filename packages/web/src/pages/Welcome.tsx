@@ -190,13 +190,13 @@ const Welcome: React.FC = () => {
         </motion.div>
         
         <motion.h1 className="welcome-title" variants={fadeInVariants}>
-          TogetherNet
+          {language === 'he' ? t('common.appName') : 'TogetherNet'}
         </motion.h1>
         
         <motion.p className="welcome-subtitle" variants={fadeInVariants}>
           {language === 'he' 
-            ? 'פלטפורמת טיפול מהפכנית הבונה מחדש ערך עצמי'
-            : 'Revolutionary therapeutic platform that rebuilds self-worth'
+            ? t('welcome.subtitle')
+            : 'Revolutionary therapeutic platform that rebuilds self-worth through daily deposits'
           }
         </motion.p>
         
@@ -207,10 +207,10 @@ const Welcome: React.FC = () => {
         
         <motion.div className="welcome-actions" variants={fadeInVariants}>
           <Link to="/heartbank" className="welcome-button primary">
-            🏦 {t('navigation.heartbank')}
+            🏦 {language === 'he' ? t('welcome.cta.heartbank') : t('navigation.heartbank')}
           </Link>
           <Link to="/studio" className="welcome-button secondary">
-            🎨 {t('navigation.studio')}
+            🎨 {language === 'he' ? t('welcome.cta.studio') : t('navigation.studio')}
           </Link>
         </motion.div>
         
@@ -222,10 +222,12 @@ const Welcome: React.FC = () => {
         >
           <motion.div className="feature-card" variants={fadeInVariants}>
             <div className="feature-icon">🏦</div>
-            <h3 className="feature-title">{t('navigation.heartbank')}</h3>
+            <h3 className="feature-title">
+              {language === 'he' ? t('welcome.features.heartbank.title') : t('navigation.heartbank')}
+            </h3>
             <p className="feature-description">
               {language === 'he' 
-                ? 'הפקדות יומיות הבונות את העושר הרגשי שלך עם ריבית דריבית'
+                ? t('welcome.features.heartbank.description')
                 : 'Daily emotional deposits that build your worth with compound interest'
               }
             </p>
@@ -233,10 +235,12 @@ const Welcome: React.FC = () => {
           
           <motion.div className="feature-card" variants={fadeInVariants}>
             <div className="feature-icon">🎨</div>
-            <h3 className="feature-title">{t('navigation.studio')}</h3>
+            <h3 className="feature-title">
+              {language === 'he' ? t('welcome.features.studio.title') : t('navigation.studio')}
+            </h3>
             <p className="feature-description">
               {language === 'he'
-                ? 'כלי יצירה לביטוי ההפקדות שלך דרך אמנות ומדיטציה'
+                ? t('welcome.features.studio.description')
                 : 'Creative tools to express your deposits through art and meditation'
               }
             </p>
@@ -244,10 +248,12 @@ const Welcome: React.FC = () => {
           
           <motion.div className="feature-card" variants={fadeInVariants}>
             <div className="feature-icon">🌐</div>
-            <h3 className="feature-title">{t('navigation.gallery')}</h3>
+            <h3 className="feature-title">
+              {language === 'he' ? t('welcome.features.gallery.title') : t('navigation.gallery')}
+            </h3>
             <p className="feature-description">
               {language === 'he'
-                ? 'קהילה של לבבות מתרפאים החולקים את המסע שלהם'
+                ? t('welcome.features.gallery.description')
                 : 'A community of healing hearts sharing their journey'
               }
             </p>
@@ -255,10 +261,12 @@ const Welcome: React.FC = () => {
           
           <motion.div className="feature-card" variants={fadeInVariants}>
             <div className="feature-icon">⭐</div>
-            <h3 className="feature-title">{t('navigation.treasury')}</h3>
+            <h3 className="feature-title">
+              {language === 'he' ? t('welcome.features.treasury.title') : t('navigation.treasury')}
+            </h3>
             <p className="feature-description">
               {language === 'he'
-                ? 'אוצר של רגעים מהפכניים וחוכמה טיפולית'
+                ? t('welcome.features.treasury.description')
                 : 'Treasury of transformative moments and therapeutic wisdom'
               }
             </p>

@@ -222,7 +222,9 @@ export const Navbar: React.FC = () => {
         {/* Logo */}
         <Link to="/" className="nav-logo" onClick={handleLinkClick}>
           <span className="logo-icon">🏦</span>
-          <span className="logo-text">TogetherNet</span>
+          <span className="logo-text">
+            {language === 'he' ? t('common.appName') : 'TogetherNet'}
+          </span>
         </Link>
         
         {/* Navigation Links */}

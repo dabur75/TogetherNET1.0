@@ -1,5 +1,6 @@
 {
   "common": {
+    "appName": "TogetherNet",
     "loading": "Loading",
     "error": "Error",
     "success": "Success",
@@ -17,12 +18,14 @@
   
   "navigation": {
     "heartbank": "HeartBank",
-    "studio": "Creative Studio",
+    "studio": "HealingRow",
     "gallery": "Gallery",
     "treasury": "Treasury",
     "home": "Home",
     "profile": "Profile",
-    "settings": "Settings"
+    "settings": "Settings",
+    "emergensee": "Emergen-See",
+    "lovemarkit": "Love-Mark-It"
   },
   
   "auth": {
@@ -89,7 +92,7 @@
   },
   
   "studio": {
-    "title": "Creative Studio",
+    "title": "HealingRow",
     "subtitle": "Express your deposits through art",
     "tools": {
       "emotionPainter": "Emotion Painter",
@@ -157,5 +160,59 @@
     "safety": "This is a safe space for your heart",
     "growth": "Every small step is profound growth",
     "community": "You're part of a healing community"
+  },
+
+  "emergensee": {
+    "title": "Emergen-See",
+    "subtitle": "Immediate support in difficult times",
+    "button": "I need Emergen-See",
+    "message": "We see you. You're not alone.",
+    "help": "Help is available here and now",
+    "contact": "Connect to human support",
+    "resources": "Emergency resources and support"
+  },
+
+  "lovemarkit": {
+    "title": "Love-Mark-It",
+    "subtitle": "Invest your emotional wealth in worldly good",
+    "description": "When you have emotional abundance, it's time to share it with others",
+    "requirements": "Minimum 21 HeartBank deposits required",
+    "categories": {
+      "emotional": "Emotional support",
+      "practical": "Practical help",
+      "creative": "Creating for others",
+      "knowledge": "Sharing knowledge"
+    },
+    "offers": "Good offers",
+    "requests": "Help requests",
+    "completed": "Completed exchanges",
+    "impact": "Community impact"
+  },
+
+  "welcome": {
+    "title": "Welcome to TogetherNet",
+    "subtitle": "Revolutionary therapeutic platform that rebuilds self-worth through daily deposits",
+    "cta": {
+      "heartbank": "Enter HeartBank",
+      "studio": "Enter HealingRow"
+    },
+    "features": {
+      "heartbank": {
+        "title": "HeartBank",
+        "description": "Daily emotional deposits that build your worth with compound interest"
+      },
+      "studio": {
+        "title": "HealingRow",
+        "description": "Creative tools to express your deposits through art and meditation"
+      },
+      "gallery": {
+        "title": "Community Gallery",
+        "description": "A community of healing hearts sharing their journey"
+      },
+      "treasury": {
+        "title": "Treasury of Light",
+        "description": "Archive of transformative moments and therapeutic wisdom"
+      }
+    }
   }
 }
