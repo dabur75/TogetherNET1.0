@@ -1,0 +1,161 @@
+{
+  "common": {
+    "loading": "Loading",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "next": "Next",
+    "previous": "Previous",
+    "submit": "Submit",
+    "continue": "Continue",
+    "back": "Back"
+  },
+  
+  "navigation": {
+    "heartbank": "HeartBank",
+    "studio": "Creative Studio",
+    "gallery": "Gallery",
+    "treasury": "Treasury",
+    "home": "Home",
+    "profile": "Profile",
+    "settings": "Settings"
+  },
+  
+  "auth": {
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "signUp": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot Password?",
+    "createAccount": "Create Account",
+    "welcomeBack": "Welcome Back",
+    "anonymous": "Continue Anonymously"
+  },
+  
+  "heartbank": {
+    "title": "HeartBank",
+    "subtitle": "Your emotional wealth grows here",
+    "dailyExercise": "Today's Exercise",
+    "makeDeposit": "Make Deposit",
+    "balance": "Current Balance",
+    "streak": "Streak",
+    "days": "days",
+    "deposit": {
+      "title": "Make a Deposit",
+      "placeholder": "Share what's in your heart today...",
+      "categories": {
+        "gratitude": "Gratitude",
+        "courage": "Courage",
+        "honesty": "Honesty",
+        "success": "Success",
+        "selfCompassion": "Self-Compassion"
+      },
+      "privacy": {
+        "private": "Private - Only you and your banker will see this",
+        "public": "Public - Community can connect with your experience"
+      },
+      "submit": "Deposit to Heart",
+      "submitting": "Depositing..."
+    },
+    "banker": {
+      "greeting": "Welcome to your HeartBank",
+      "firstDeposit": "This first deposit is precious",
+      "encouragement": "Your worth is growing with each deposit",
+      "milestone": {
+        "3": "Three days! Your seedling is planted 🌱",
+        "8": "Eight days! Your roots are growing 🌿",
+        "21": "Twenty-one days! Your flower is blooming 🌸",
+        "55": "Fifty-five days! Your tree stands strong 🌳"
+      }
+    }
+  },
+  
+  "exercises": {
+    "title": "Daily Exercise",
+    "loading": "Loading today's exercise...",
+    "error": "Could not load exercise",
+    "levels": {
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
+    },
+    "complete": "Complete Exercise",
+    "skip": "Skip for Today"
+  },
+  
+  "studio": {
+    "title": "Creative Studio",
+    "subtitle": "Express your deposits through art",
+    "tools": {
+      "emotionPainter": "Emotion Painter",
+      "storyWeaver": "Story Weaver",
+      "gratitudeGarden": "Gratitude Garden",
+      "meditationSpace": "Meditation Space"
+    }
+  },
+  
+  "gallery": {
+    "title": "Community Gallery",
+    "subtitle": "Shared healing journeys",
+    "filters": {
+      "all": "All",
+      "recent": "Recent",
+      "popular": "Popular",
+      "category": "Category"
+    },
+    "reactions": {
+      "heart": "Heart",
+      "strength": "Strength",
+      "comfort": "Comfort",
+      "light": "Light"
+    }
+  },
+  
+  "treasury": {
+    "title": "Treasury of Light",
+    "subtitle": "Archive of transformative moments",
+    "search": "Search treasury...",
+    "noResults": "No treasures found"
+  },
+  
+  "crisis": {
+    "button": "I need support",
+    "title": "You're not alone",
+    "message": "We see you in your darkness. Help is here.",
+    "immediate": "Immediate support available",
+    "contact": "Connect with therapist",
+    "resources": "Crisis resources"
+  },
+  
+  "errors": {
+    "generic": "Something went wrong",
+    "network": "Network connection error",
+    "notFound": "Page not found",
+    "unauthorized": "Please sign in to continue",
+    "rateLimit": "Too many requests, please try again later"
+  },
+  
+  "accessibility": {
+    "menu": "Menu",
+    "close": "Close",
+    "expand": "Expand",
+    "collapse": "Collapse",
+    "skipToContent": "Skip to main content",
+    "languageSwitch": "Switch to Hebrew",
+    "darkMode": "Toggle dark mode"
+  },
+  
+  "therapeutic": {
+    "worth": "Your worth is not broken - it's depleted",
+    "rebuilding": "Let's rebuild it together, one deposit at a time",
+    "patience": "Healing happens at your pace",
+    "safety": "This is a safe space for your heart",
+    "growth": "Every small step is profound growth",
+    "community": "You're part of a healing community"
+  }
+}

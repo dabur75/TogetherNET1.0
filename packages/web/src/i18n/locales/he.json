@@ -1,0 +1,161 @@
+{
+  "common": {
+    "loading": "טוען",
+    "error": "שגיאה",
+    "success": "הצלחה",
+    "cancel": "בטל",
+    "save": "שמור",
+    "delete": "מחק",
+    "edit": "ערוך",
+    "close": "סגור",
+    "next": "הבא",
+    "previous": "קודם",
+    "submit": "שלח",
+    "continue": "המשך",
+    "back": "חזור"
+  },
+  
+  "navigation": {
+    "heartbank": "בנק הלב",
+    "studio": "סטודיו יצירה",
+    "gallery": "גלריה",
+    "treasury": "אוצר האור",
+    "home": "בית",
+    "profile": "פרופיל",
+    "settings": "הגדרות"
+  },
+  
+  "auth": {
+    "signIn": "התחבר",
+    "signOut": "התנתק",
+    "signUp": "הרשמה",
+    "email": "אימייל",
+    "password": "סיסמה",
+    "forgotPassword": "שכחת סיסמה?",
+    "createAccount": "צור חשבון",
+    "welcomeBack": "ברוך שובך",
+    "anonymous": "המשך ללא הרשמה"
+  },
+  
+  "heartbank": {
+    "title": "בנק הלב",
+    "subtitle": "העושר הרגשי שלך גדל כאן",
+    "dailyExercise": "התרגיל של היום",
+    "makeDeposit": "בצע הפקדה",
+    "balance": "יתרה נוכחית",
+    "streak": "רצף",
+    "days": "ימים",
+    "deposit": {
+      "title": "בצע הפקדה",
+      "placeholder": "שתף מה יש לך בלב היום...",
+      "categories": {
+        "gratitude": "הכרת תודה",
+        "courage": "אומץ",
+        "honesty": "כנות",
+        "success": "הצלחה",
+        "selfCompassion": "חמלה עצמית"
+      },
+      "privacy": {
+        "private": "פרטי - רק אתה והבנקאי תראו את זה",
+        "public": "ציבורי - הקהילה יכולה להתחבר לחוויה שלך"
+      },
+      "submit": "הפקד ללב",
+      "submitting": "מפקיד..."
+    },
+    "banker": {
+      "greeting": "ברוך הבא לבנק הלב שלך",
+      "firstDeposit": "ההפקדה הראשונה הזו יקרה",
+      "encouragement": "הערך שלך גדל עם כל הפקדה",
+      "milestone": {
+        "3": "שלושה ימים! השתיל שלך נשתל 🌱",
+        "8": "שמונה ימים! השורשים שלך צומחים 🌿",
+        "21": "עשרים ואחד ימים! הפרח שלך פורח 🌸",
+        "55": "חמישים וחמישה ימים! העץ שלך עומד חזק 🌳"
+      }
+    }
+  },
+  
+  "exercises": {
+    "title": "התרגיל היומי",
+    "loading": "טוען את התרגיל של היום...",
+    "error": "לא ניתן לטעון את התרגיל",
+    "levels": {
+      "beginner": "מתחיל",
+      "intermediate": "בינוני",
+      "advanced": "מתקדם"
+    },
+    "complete": "השלם תרגיל",
+    "skip": "דלג להיום"
+  },
+  
+  "studio": {
+    "title": "סטודיו יצירה",
+    "subtitle": "בטא את ההפקדות שלך דרך אמנות",
+    "tools": {
+      "emotionPainter": "צייר רגשות",
+      "storyWeaver": "אורג סיפורים",
+      "gratitudeGarden": "גן הכרת התודה",
+      "meditationSpace": "מרחב מדיטציה"
+    }
+  },
+  
+  "gallery": {
+    "title": "גלריית הקהילה",
+    "subtitle": "מסעות ריפוי משותפים",
+    "filters": {
+      "all": "הכל",
+      "recent": "אחרונים",
+      "popular": "פופולריים",
+      "category": "קטגוריה"
+    },
+    "reactions": {
+      "heart": "לב",
+      "strength": "חוזק",
+      "comfort": "נחמה",
+      "light": "אור"
+    }
+  },
+  
+  "treasury": {
+    "title": "אוצר האור",
+    "subtitle": "ארכיון של רגעים מהפכניים",
+    "search": "חפש באוצר...",
+    "noResults": "לא נמצאו אוצרות"
+  },
+  
+  "crisis": {
+    "button": "אני צריך תמיכה",
+    "title": "אתה לא לבד",
+    "message": "אנחנו רואים אותך בחושך שלך. עזרה כאן.",
+    "immediate": "תמיכה מיידית זמינה",
+    "contact": "התחבר למטפל",
+    "resources": "משאבי משבר"
+  },
+  
+  "errors": {
+    "generic": "משהו השתבש",
+    "network": "שגיאת חיבור רשת",
+    "notFound": "העמוד לא נמצא",
+    "unauthorized": "אנא התחבר כדי להמשיך",
+    "rateLimit": "יותר מדי בקשות, נסה שוב מאוחר יותר"
+  },
+  
+  "accessibility": {
+    "menu": "תפריט",
+    "close": "סגור",
+    "expand": "הרחב",
+    "collapse": "כווץ",
+    "skipToContent": "דלג לתוכן הראשי",
+    "languageSwitch": "עבור לאנגלית",
+    "darkMode": "החלף מצב כהה"
+  },
+  
+  "therapeutic": {
+    "worth": "הערך שלך לא שבור - הוא מדולדל",
+    "rebuilding": "בוא נבנה אותו מחדש יחד, הפקדה אחת בכל פעם",
+    "patience": "הריפוי קורה בקצב שלך",
+    "safety": "זה מקום בטוח ללב שלך",
+    "growth": "כל צעד קטן הוא צמיחה עמוקה",
+    "community": "אתה חלק מקהילה מרפאה"
+  }
+}

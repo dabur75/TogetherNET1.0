@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Therapeutic Platform Meta -->
+    <title>TogetherNet - Healing Hearts Through Daily Deposits</title>
+    <meta name="description" content="Revolutionary therapeutic platform that rebuilds self-worth through daily emotional deposits. Hebrew and English support for healing hearts worldwide." />
+    <meta name="keywords" content="therapy, mental health, self-worth, healing, Hebrew, עברית, טיפול, בריאות נפש" />
+    
+    <!-- Hebrew RTL Support -->
+    <meta name="dir" content="ltr" />
+    <meta name="language" content="en" />
+    
+    <!-- PWA Meta -->
+    <meta name="theme-color" content="#FFD700" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="TogetherNet" />
+    
+    <!-- Preload Critical Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Assistant:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    
+    <!-- Therapeutic Color Palette CSS Variables -->
+    <style>
+      :root {
+        /* Core Sacred Palette */
+        --color-gold: #FFD700;
+        --color-turquoise: #40E0D0;
+        --color-soft-white: #FAFAFA;
+        --color-warm-black: #1A1A1A;
+        
+        /* Semantic Colors */
+        --color-deposit: #FFD700;
+        --color-crisis: #40E0D0;
+        --color-success: #4CAF50;
+        --color-gentle: #FFF8DC;
+        
+        /* Typography */
+        --font-banker: 'Quicksand', system-ui, sans-serif;
+        --font-body: 'Assistant', system-ui, sans-serif;
+        --font-hebrew: system-ui, -apple-system, sans-serif;
+      }
+      
+      /* RTL Support */
+      [dir="rtl"] {
+        text-align: right;
+        direction: rtl;
+      }
+      
+      /* Loading State */
+      .loading {
+        background: linear-gradient(45deg, var(--color-gold), var(--color-turquoise));
+        animation: breathe 4s ease-in-out infinite;
+      }
+      
+      @keyframes breathe {
+        0%, 100% { opacity: 0.8; }
+        50% { opacity: 1; }
+      }
+      
+      /* Hebrew Font Loading */
+      .hebrew {
+        font-family: var(--font-hebrew);
+        direction: rtl;
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <!-- Loading State with Therapeutic Colors -->
+      <div class="loading" style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-banker);
+        color: var(--color-warm-black);
+        font-size: 1.2rem;
+        z-index: 9999;
+      ">
+        <div style="text-align: center;">
+          <div style="font-size: 2rem; margin-bottom: 1rem;">🏦💛</div>
+          <div>TogetherNet</div>
+          <div style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">
+            Rebuilding self-worth, one deposit at a time
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
