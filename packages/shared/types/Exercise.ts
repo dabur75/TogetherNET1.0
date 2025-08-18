@@ -15,6 +15,7 @@ export interface LocalizedString {
 /**
  * Core Exercise Interface - Mobile-Optimized
  * Designed for 6 AM daily publishing and mobile-first consumption
+ * Updated to match real exercise format with structured content
  */
 export interface Exercise {
   id: string
@@ -22,12 +23,20 @@ export interface Exercise {
   category: DepositCategory
   theme: string // English theme name for categorization
   
-  // Mobile-friendly exercise content
-  exercise: LocalizedString
+  // Real exercise structure - matching actual therapeutic content
+  title: LocalizedString // "תרגול יומי 1 – הפקדה ראשונה"
+  greeting: LocalizedString // "בוקר טוב 💛"
+  introduction: LocalizedString // Opening paragraph with context
+  coreQuestion: LocalizedString // Main therapeutic question
+  guidance: LocalizedString // Examples and encouragement
+  instruction: LocalizedString // Specific writing instruction
+  template: LocalizedString // Deposit sentence starter: "אני מפקיד בבנק הערך העצמי שלי על כך ש..."
+  
+  // Banker introduction (separate from exercise content)
   bankerIntro: LocalizedString
   
-  // Progressive difficulty levels for mobile engagement
-  levels: {
+  // Progressive difficulty levels for mobile engagement (optional for guided exercises)
+  levels?: {
     beginner: LocalizedString
     intermediate: LocalizedString  
     advanced: LocalizedString

@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { css } from '@emotion/react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useLanguage } from '../hooks/useLanguage'
 import DepositForm from '../components/DepositForm'
-import { currentExercise } from '../../../shared/constants/Exercises'
+import WelcomeScreen from '../components/WelcomeScreen'
+import CrisisSupport, { CrisisTriggerButton } from '../components/CrisisSupport'
+import { sampleExercise } from '../../../shared/constants/Exercises'
 import { DepositInput } from '../../../shared/types/Deposit'
+import { getBankerService } from '../../../shared/services/BankerService'
+import { BankerResponse } from '../../../shared/types/Banker'
+import { OnboardingStatus, User, createDefaultUser } from '../../../shared/types/User'
+import { OnboardingService } from '../../../shared/services/OnboardingService'
+import { CrisisDetectionService, CrisisRiskLevel } from '../../../shared/services/CrisisDetectionService'
 
 const heartbankStyles = css`
   min-height: calc(100vh - 80px);
@@ -127,6 +134,14 @@ const heartbankStyles = css`
       @media (min-width: 768px) {
         font-size: 1.1rem;
       }
+      
+      &.banker-response {
+        background: rgba(255, 215, 0, 0.1);
+        padding: 1rem;
+        border-radius: 0.75rem;
+        border-left: 3px solid var(--color-gold);
+        animation: gentleGlow 2s ease-in-out;
+      }
     }
     
     .banker-stats {
@@ -165,189 +180,9 @@ const heartbankStyles = css`
     }
   }
   
-  /* Daily exercise card - mobile first */
-  .daily-exercise-card {
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    border-radius: 1rem;
-    padding: 1.5rem;
-    border: 1px solid rgba(64, 224, 208, 0.3);
-    touch-action: manipulation;
-    
-    .exercise-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1rem;
-      
-      .exercise-title {
-        font-size: 1.25rem;
-        color: var(--color-turquoise);
-        font-weight: 600;
-        
-        @media (min-width: 768px) {
-          font-size: 1.5rem;
-        }
-      }
-      
-      .exercise-icon {
-        font-size: 1.5rem;
-        animation: breathing 3s ease-in-out infinite;
-      }
-    }
-    
-    .exercise-content {
-      background: rgba(64, 224, 208, 0.05);
-      padding: 1rem;
-      border-radius: 0.75rem;
-      margin-bottom: 1rem;
-      border-left: 4px solid var(--color-turquoise);
-      
-      .exercise-prompt {
-        font-size: 1rem;
-        line-height: 1.6;
-        color: var(--color-warm-black);
-        margin-bottom: 0.75rem;
-      }
-      
-      .exercise-category {
-        display: inline-block;
-        background: var(--color-turquoise);
-        color: white;
-        padding: 0.25rem 0.75rem;
-        border-radius: 1rem;
-        font-size: 0.8rem;
-        font-weight: 500;
-      }
-    }
-    
-    .exercise-actions {
-      display: flex;
-      gap: 0.75rem;
-      
-      .exercise-btn {
-        flex: 1;
-        padding: 0.75rem;
-        border: none;
-        border-radius: 0.5rem;
-        font-weight: 500;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        touch-action: manipulation;
-        
-        &.primary {
-          background: var(--color-turquoise);
-          color: white;
-          
-          &:hover {
-            background: var(--color-gold);
-            transform: translateY(-2px);
-          }
-        }
-        
-        &.secondary {
-          background: transparent;
-          color: var(--color-turquoise);
-          border: 2px solid var(--color-turquoise);
-          
-          &:hover {
-            background: var(--color-turquoise);
-            color: white;
-          }
-        }
-      }
-    }
-  }
+  /* Exercise integration handled by DepositForm component */
   
-  /* Deposit form card - mobile optimized */
-  .deposit-form-card {
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    border-radius: 1rem;
-    padding: 1.5rem;
-    border: 1px solid rgba(255, 215, 0, 0.3);
-    
-    .form-header {
-      margin-bottom: 1rem;
-      
-      .form-title {
-        font-size: 1.25rem;
-        color: var(--color-gold);
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-        
-        @media (min-width: 768px) {
-          font-size: 1.5rem;
-        }
-      }
-      
-      .form-subtitle {
-        font-size: 0.9rem;
-        color: var(--color-warm-black);
-        opacity: 0.7;
-      }
-    }
-    
-    .deposit-textarea {
-      width: 100%;
-      min-height: 120px;
-      padding: 1rem;
-      border: 2px solid rgba(255, 215, 0, 0.3);
-      border-radius: 0.75rem;
-      font-family: inherit;
-      font-size: 1rem;
-      line-height: 1.5;
-      resize: vertical;
-      transition: border-color 0.3s ease;
-      
-      &:focus {
-        outline: none;
-        border-color: var(--color-gold);
-      }
-      
-      &::placeholder {
-        color: var(--color-warm-black);
-        opacity: 0.5;
-      }
-    }
-    
-    .form-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 1rem;
-      
-      .word-count {
-        font-size: 0.8rem;
-        color: var(--color-warm-black);
-        opacity: 0.6;
-      }
-      
-      .deposit-btn {
-        padding: 0.75rem 1.5rem;
-        background: var(--color-gold);
-        color: var(--color-warm-black);
-        border: none;
-        border-radius: 0.5rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        touch-action: manipulation;
-        
-        &:hover {
-          background: var(--color-turquoise);
-          color: white;
-          transform: translateY(-2px);
-        }
-        
-        &:disabled {
-          opacity: 0.5;
-          cursor: not-allowed;
-          transform: none;
-        }
-      }
-    }
-  }
+  /* Form styling handled by DepositForm component */
   
   /* Hebrew RTL adjustments */
   &.rtl {
@@ -355,19 +190,6 @@ const heartbankStyles = css`
     
     .heartbank-header {
       text-align: center;
-    }
-    
-    .exercise-header {
-      flex-direction: row-reverse;
-    }
-    
-    .exercise-content {
-      border-left: none;
-      border-right: 4px solid var(--color-turquoise);
-    }
-    
-    .form-footer {
-      flex-direction: row-reverse;
     }
   }
   
@@ -382,19 +204,75 @@ const heartbankStyles = css`
       opacity: 1;
     }
   }
+  
+  /* Gentle glow animation for banker responses */
+  @keyframes gentleGlow {
+    0% {
+      box-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    }
+    100% {
+      box-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+    }
+  }
 `
 
 const HeartBank: React.FC = () => {
   const { t, isRTL, language } = useLanguage()
-  // Mock data for development
-  const [mockData] = useState({
+  
+  // State for banker interactions
+  const [bankerResponse, setBankerResponse] = useState<BankerResponse | null>(null)
+  const [showBankerResponse, setShowBankerResponse] = useState(false)
+  
+  // Onboarding state
+  const [isFirstTimeUser, setIsFirstTimeUser] = useState(true) // Mock: true for demo
+  const [currentOnboardingStep, setCurrentOnboardingStep] = useState<OnboardingStatus>('not_started')
+  const [showWelcome, setShowWelcome] = useState(true) // Mock: true for demo
+  
+  // Crisis support state
+  const [showCrisisSupport, setShowCrisisSupport] = useState(false)
+  const [currentRiskLevel, setCurrentRiskLevel] = useState<CrisisRiskLevel>('none')
+  
+  // Mock user data (in real app, this would come from auth/database)
+  const [mockUser, setMockUser] = useState<User>(() => {
+    const defaultUser = createDefaultUser({
+      email: 'demo@example.com',
+      language,
+      timezone: 'Asia/Jerusalem',
+      agreeToTerms: true,
+      allowNotifications: true
+    })
+    return {
+      ...defaultUser,
+      id: 'demo-user-id',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      onboardingStatus: 'not_started', // Start with onboarding for demo
+      isFirstTimeUser: true,
+      heartBankProfile: {
+        ...defaultUser.heartBankProfile,
+        balance: 0, // First-time user starts with 0
+        totalDeposits: 0
+      }
+    }
+  })
+  
+  // Mock data for returning users (when not in onboarding)
+  const [returningUserData] = useState({
     balance: 245,
     streak: 8,
     totalDeposits: 12
   })
   
   // Get today's exercise
-  const todayExercise = currentExercise
+  const todayExercise = sampleExercise
+  
+  // Initialize services
+  const bankerService = getBankerService()
+  const onboardingService = new OnboardingService()
+  const crisisDetectionService = new CrisisDetectionService()
   
   const fadeInVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -411,21 +289,212 @@ const HeartBank: React.FC = () => {
     }
   }
   
+  // Onboarding handlers
+  const handleOnboardingNext = async () => {
+    try {
+      const nextStep = await onboardingService.advanceOnboardingStep(mockUser)
+      setCurrentOnboardingStep(nextStep)
+      
+      // Update mock user
+      setMockUser(prev => ({
+        ...prev,
+        onboardingStatus: nextStep
+      }))
+      
+      // Complete onboarding flow
+      if (nextStep === 'onboarding_complete') {
+        setShowWelcome(false)
+        setIsFirstTimeUser(false)
+      }
+    } catch (error) {
+      console.error('Error advancing onboarding:', error)
+    }
+  }
+
+  const handleOnboardingSkip = () => {
+    setCurrentOnboardingStep('onboarding_complete')
+    setShowWelcome(false)
+    setIsFirstTimeUser(false)
+  }
+
+  const handleOnboardingComplete = () => {
+    setShowWelcome(false)
+    setIsFirstTimeUser(false)
+    setMockUser(prev => ({
+      ...prev,
+      onboardingStatus: 'onboarding_complete',
+      isFirstTimeUser: false
+    }))
+  }
+
+  // Get current user data (onboarding vs returning user)
+  const currentUserData = isFirstTimeUser ? mockUser.heartBankProfile : returningUserData
+
   const handleDepositSubmit = async (deposit: DepositInput) => {
     try {
+      // Crisis detection first - safety priority
+      const crisisContext = {
+        userId: 'mock-user',
+        depositContent: deposit.content,
+        language,
+        timeOfDay: (new Date().getHours() < 12 ? 'morning' : new Date().getHours() < 18 ? 'afternoon' : 'evening') as 'morning' | 'afternoon' | 'evening',
+        userHistory: {
+          previousCrises: 0,
+          totalDeposits: currentUserData.totalDeposits,
+          streak: currentUserData.streak,
+          hasUsedCrisisSupport: false
+        },
+        mobileContext: {
+          deviceType: window.innerWidth < 768 ? 'mobile' : 'desktop' as const,
+          connectivity: 'online' as const
+        }
+      }
+
+      const crisisResult = await crisisDetectionService.detectCrisis(crisisContext)
+      
+      // Handle crisis if detected
+      if (crisisResult.urgentIntervention || crisisResult.riskLevel === 'high' || crisisResult.riskLevel === 'critical') {
+        setCurrentRiskLevel(crisisResult.riskLevel)
+        setShowCrisisSupport(true)
+        
+        // Still show banker response for crisis
+        const crisisResponse = crisisDetectionService.getImmediateCrisisResponse(crisisResult.riskLevel, language)
+        if (crisisResponse) {
+          setBankerResponse(crisisResponse)
+          setShowBankerResponse(true)
+        }
+        
+        return // Don't continue with normal deposit processing
+      }
+
       // TODO: Implement actual deposit submission to Firebase
       console.log('Submitting deposit:', deposit)
       
       // For now, simulate success
       await new Promise(resolve => setTimeout(resolve, 1000))
       
-      // Show success message handled by DepositForm
+      // Update user data for first-time users
+      if (isFirstTimeUser && mockUser.heartBankProfile.totalDeposits === 0) {
+        // This is their first deposit - advance onboarding
+        setMockUser(prev => ({
+          ...prev,
+          heartBankProfile: {
+            ...prev.heartBankProfile,
+            totalDeposits: 1,
+            balance: 25, // First deposit value
+            firstDepositDate: new Date(),
+            lastDepositDate: new Date()
+          },
+          onboardingStatus: 'first_deposit_made'
+        }))
+        setCurrentOnboardingStep('first_deposit_made')
+      }
+      
+      // Get banker response based on deposit
+      const bankerContext = {
+        userId: 'mock-user',
+        language,
+        trigger: 'deposit_submitted' as const,
+        deposit: {
+          id: 'temp-id',
+          userId: 'mock-user',
+          date: new Date(),
+          content: deposit.content,
+          category: deposit.category,
+          wordCount: deposit.content.split(' ').filter(w => w.length > 0).length,
+          isPublic: deposit.isPublic,
+          baseValue: Math.max(20, deposit.content.split(' ').length * 2),
+          interestRate: 0.05,
+          currentValue: Math.max(20, deposit.content.split(' ').length * 2),
+          compoundingSince: new Date(),
+          linkedExercise: deposit.linkedExercise,
+          language,
+          mobileContext: {
+            deviceType: window.innerWidth < 768 ? 'mobile' : 'desktop' as 'mobile' | 'tablet' | 'desktop',
+            inputMethod: 'keyboard' as const,
+            sessionDuration: 300,
+            interruptions: 0,
+            timeOfDay: new Date().getHours() < 12 ? 'morning' : new Date().getHours() < 18 ? 'afternoon' : 'evening',
+            location: 'unknown' as const
+          },
+          reactions: { heart: 0, trophy: 0, hug: 0, sparkle: 0 },
+          inspirationCount: 0,
+          commentCount: 0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          version: 1
+        },
+        userState: {
+          streak: currentUserData.streak,
+          totalDeposits: currentUserData.totalDeposits,
+          balance: currentUserData.balance,
+          preferredCategories: [deposit.category],
+          recentMood: 'good' as const
+        },
+        timeContext: {
+          timeOfDay: (new Date().getHours() < 12 ? 'morning' : 
+                    new Date().getHours() < 18 ? 'afternoon' : 'evening') as 'morning' | 'afternoon' | 'evening',
+          dayOfWeek: new Date().toLocaleDateString('en', { weekday: 'long' }),
+          isWeekend: [0, 6].includes(new Date().getDay())
+        },
+        mobileContext: {
+          deviceType: window.innerWidth < 768 ? 'mobile' : 'desktop' as const,
+          connectivity: 'online' as const,
+          sessionDuration: 5,
+          isFirstTimeToday: currentUserData.totalDeposits === 0
+        },
+        crisisIndicators: {
+          riskLevel: 'none' as const,
+          detectedKeywords: [],
+          urgentIntervention: false,
+          supportContactNeeded: false
+        }
+      }
+      
+      // Get banker response
+      const response = await bankerService.getResponse(bankerContext)
+      setBankerResponse(response)
+      setShowBankerResponse(true)
+      
+      // Auto-hide response after 8 seconds
+      setTimeout(() => {
+        setShowBankerResponse(false)
+      }, 8000)
+      
     } catch (error) {
       console.error('Error submitting deposit:', error)
       throw error
     }
   }
+
+  // Crisis handlers
+  const handleCrisisOpen = () => {
+    setShowCrisisSupport(true)
+    setCurrentRiskLevel('medium') // Default to medium for manual triggers
+  }
+
+  const handleCrisisClose = () => {
+    setShowCrisisSupport(false)
+    setCurrentRiskLevel('none')
+  }
+
+  const handleEmergencyCall = (contactId: string) => {
+    console.log(`Emergency call initiated to: ${contactId}`)
+    // Log the emergency contact usage
+  }
   
+  // Show welcome screen for first-time users
+  if (showWelcome && isFirstTimeUser) {
+    return (
+      <WelcomeScreen
+        currentStep={currentOnboardingStep}
+        onNext={handleOnboardingNext}
+        onSkip={handleOnboardingSkip}
+        onComplete={handleOnboardingComplete}
+      />
+    )
+  }
+
   return (
     <motion.div 
       css={heartbankStyles} 
@@ -440,6 +509,52 @@ const HeartBank: React.FC = () => {
           <div className="heartbank-icon">🏦</div>
           <h1 className="heartbank-title">{t('heartbank.title')}</h1>
           <p className="heartbank-subtitle">{t('heartbank.subtitle')}</p>
+          
+          {/* Demo toggle for testing (remove in production) */}
+          <div style={{ 
+            marginTop: '1rem', 
+            display: 'flex', 
+            gap: '0.5rem', 
+            justifyContent: 'center',
+            flexWrap: 'wrap'
+          }}>
+            <button
+              onClick={() => {
+                setIsFirstTimeUser(true)
+                setShowWelcome(true)
+                setCurrentOnboardingStep('not_started')
+              }}
+              style={{
+                padding: '0.5rem 1rem',
+                backgroundColor: 'var(--color-turquoise)',
+                color: 'white',
+                border: 'none',
+                borderRadius: '0.5rem',
+                fontSize: '0.8rem',
+                cursor: 'pointer'
+              }}
+            >
+              {language === 'he' ? 'דמו: משתמש חדש' : 'Demo: New User'}
+            </button>
+            <button
+              onClick={() => {
+                setIsFirstTimeUser(false)
+                setShowWelcome(false)
+                setCurrentOnboardingStep('onboarding_complete')
+              }}
+              style={{
+                padding: '0.5rem 1rem',
+                backgroundColor: 'var(--color-gold)',
+                color: 'var(--color-warm-black)',
+                border: 'none',
+                borderRadius: '0.5rem',
+                fontSize: '0.8rem',
+                cursor: 'pointer'
+              }}
+            >
+              {language === 'he' ? 'דמו: משתמש חוזר' : 'Demo: Returning User'}
+            </button>
+          </div>
         </motion.header>
         
         {/* Main Content */}
@@ -447,21 +562,55 @@ const HeartBank: React.FC = () => {
           {/* Banker Presence */}
           <motion.aside className="banker-presence" variants={fadeInVariants}>
             <div className="banker-avatar">🏛️</div>
-            <p className="banker-message">
-              {todayExercise.bankerIntro[language]}
-            </p>
+            
+            {/* Banker Message - Dynamic based on responses */}
+            <AnimatePresence mode="wait">
+              {showBankerResponse && bankerResponse ? (
+                <motion.div
+                  key="banker-response"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <p className="banker-message banker-response">
+                    {bankerResponse?.content?.[language] || (language === 'he' ? 'תודה על ההפקדה שלך...' : 'Thank you for your deposit...')}
+                  </p>
+                  {bankerResponse?.therapeutic?.followUpSuggestion && (
+                    <p style={{ 
+                      fontSize: '0.9rem', 
+                      color: 'var(--color-turquoise)', 
+                      marginTop: '0.5rem',
+                      fontStyle: 'normal'
+                    }}>
+                      {bankerResponse.therapeutic.followUpSuggestion}
+                    </p>
+                  )}
+                </motion.div>
+              ) : (
+                <motion.p 
+                  key="banker-intro"
+                  className="banker-message"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  {todayExercise?.bankerIntro?.[language] || (language === 'he' ? 'ברוך הבא לבנק הלב שלך...' : 'Welcome to your HeartBank...')}
+                </motion.p>
+              )}
+            </AnimatePresence>
             
             <div className="banker-stats">
               <div className="stat-item">
-                <span className="stat-value">{mockData.balance}</span>
+                <span className="stat-value">{currentUserData.balance}</span>
                 <span className="stat-label">{t('heartbank.balance')}</span>
               </div>
               <div className="stat-item">
-                <span className="stat-value">{mockData.streak}</span>
+                <span className="stat-value">{currentUserData.streak}</span>
                 <span className="stat-label">{t('heartbank.streak')}</span>
               </div>
               <div className="stat-item">
-                <span className="stat-value">{mockData.totalDeposits}</span>
+                <span className="stat-value">{currentUserData.totalDeposits}</span>
                 <span className="stat-label">
                   {language === 'he' ? 'הפקדות' : 'Deposits'}
                 </span>
@@ -471,44 +620,29 @@ const HeartBank: React.FC = () => {
           
           {/* Main Content Area */}
           <div className="heartbank-content">
-            {/* Daily Exercise */}
-            <motion.section className="daily-exercise-card" variants={fadeInVariants}>
-              <div className="exercise-header">
-                <h2 className="exercise-title">{t('heartbank.dailyExercise')}</h2>
-                <span className="exercise-icon">🌱</span>
-              </div>
-              
-              <div className="exercise-content">
-                <p className="exercise-prompt">
-                  {todayExercise.exercise[language]}
-                </p>
-                <span className="exercise-category">
-                  {language === 'he' ? 'הכרת תודה' : 'gratitude'}
-                </span>
-              </div>
-              
-              <div className="exercise-actions">
-                <button className="exercise-btn primary">
-                  {language === 'he' ? 'התחל תרגיל' : 'Start Exercise'}
-                </button>
-                <button className="exercise-btn secondary">
-                  {language === 'he' ? 'דלג היום' : 'Skip Today'}
-                </button>
-              </div>
+            {/* Enhanced Deposit Form with Exercise Integration */}
+            <motion.section variants={fadeInVariants}>
+              <DepositForm
+                exercise={todayExercise}
+                onSubmit={handleDepositSubmit}
+              />
             </motion.section>
-            
-            {/* Deposit Form */}
-            <DepositForm
-              linkedExercise={{
-                id: todayExercise.id,
-                category: todayExercise.category,
-                prompt: todayExercise.exercise[language]
-              }}
-              onSubmit={handleDepositSubmit}
-            />
           </div>
         </div>
       </div>
+
+      {/* Crisis Support UI */}
+      <CrisisSupport 
+        isVisible={showCrisisSupport}
+        riskLevel={currentRiskLevel}
+        onClose={handleCrisisClose}
+        onEmergencyCall={handleEmergencyCall}
+      />
+
+      {/* Crisis Trigger Button - Always visible */}
+      {!showCrisisSupport && (
+        <CrisisTriggerButton onClick={handleCrisisOpen} />
+      )}
     </motion.div>
   )
 }

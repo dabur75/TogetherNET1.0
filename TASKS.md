@@ -71,13 +71,16 @@ ok # TASKS.md - TogetherNet Development Tasks
 
 ### Mobile-Optimized Banker AI Character
 
-- [ ] Design Banker response structure optimized for mobile screens
-- [ ] Write 100+ core responses in English (mobile-friendly lengths)
-- [ ] Translate responses to Hebrew (native quality, mobile-optimized)
-- [ ] Implement context-aware response selection for touch interfaces
-- [ ] Create first-time user responses with mobile onboarding flow
+- [✅] Design Banker response structure optimized for mobile screens
+- [✅] Write 100+ core responses in English (mobile-friendly lengths)
+- [✅] Translate responses to Hebrew (native quality, mobile-optimized)
+- [✅] Implement context-aware response selection for touch interfaces
+- [✅] Fix banker response runtime errors and null safety
+- [✅] Enhance exercise-guided vs free deposit response logic
+- [✅] Implement category-specific response mapping (self-compassion handling)
+- [✅] Create first-time user responses with mobile onboarding flow
 - [ ] Create streak milestone responses with mobile celebrations
-- [ ] Create crisis detection responses for mobile emergency UI
+- [✅] Create crisis detection responses for mobile emergency UI
 - [ ] Build vulnerable moment responses for small screen intimacy
 - [ ] Implement seasonal adaptations with responsive design
 - [ ] Create visual banker presence (golden light) with touch interactions
@@ -89,6 +92,10 @@ ok # TASKS.md - TogetherNet Development Tasks
 - [✅] Implement mobile-responsive 5 category selector with swipe navigation
 - [✅] Build intuitive private/public toggle for mobile users
 - [✅] Create deposit validation (20-500 words) with real-time mobile feedback
+- [✅] Implement exercise summary/expand functionality with mobile touch optimization
+- [✅] Build two-path deposit system (exercise-guided vs free deposits)
+- [✅] Create category currency selector for free deposits with haptic feedback
+- [✅] Integrate HeartBank form with enhanced exercise and banker response system
 - [ ] Implement offline-first deposit saving to Firestore with sync
 - [ ] Build mobile-optimized deposit history view with infinite scroll
 - [ ] Create deposit editing capability with mobile text selection
@@ -400,16 +407,17 @@ ok # TASKS.md - TogetherNet Development Tasks
 
 ## 📊 Progress Summary
 
-**Total Tasks**: 234
-**Completed**: 17
+
+**Total Tasks**: 241
+**Completed**: 30
 **In Progress**: 0
 **Blocked**: 0
-**Completion**: 7%
+**Completion**: 12%
 
-**Recent Completion**: Mobile-First HeartBank Core - Completed Exercise TypeScript interfaces, database schema, sample exercise, 5 therapeutic categories, and full deposit form system with validation
+**Recent Completion**: Crisis Detection System - Implemented comprehensive crisis detection algorithm with keyword analysis in Hebrew/English, crisis response workflow with escalation levels, emergency contact service integration, mobile-optimized crisis support UI components, and comprehensive testing suite for various crisis scenarios
 
-**Current Sprint**: Milestone 1 - HeartBank Core
-**Current Priority**: Banker AI Response System (100+ therapeutic contexts)
+**Current Sprint**: Milestone 1 - HeartBank Core  
+**Current Priority**: Complete remaining Banker features (first-time responses, crisis detection, streak celebrations)
 **Next Milestone**: Crisis & Support Systems
 
 ---

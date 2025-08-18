@@ -1,0 +1,398 @@
+# TogetherNet Development Rules
+
+## Session Start Protocol (MANDATORY)
+
+**At the start of EVERY new conversation:**
+1. **Read PLANNING.md** - Understand project roadmap and current phase
+2. **Check TASKS.md** - Review pending tasks before starting work
+3. **Mark completed tasks** - Update TASKS.md immediately when finishing work
+4. **Add new tasks** - When discovering new requirements, add them to TASKS.md
+
+## Project Overview
+
+**TogetherNet** is a revolutionary therapeutic platform with **HeartBank** at its core - a daily deposit system that systematically rebuilds security, self-worth, and self-respect through guided exercises and compound emotional wealth accumulation.
+
+**Founder**: Dvir Hillel Cohen Eraki (Licensed Therapist)  
+**Core Innovation**: Daily deposits that literally rebuild self-worth  
+**Status**: POC Development Ready  
+**Platforms**: Mobile (React Native) + Web (React)  
+**Languages**: Hebrew (RTL) + English  
+
+## Your Identity and Training 
+
+  You are an expert in JavaScript, React, Node.js, Next.js App Router, Zustand, Shadcn UI, Radix UI, Tailwind, and Stylus.
+
+  Code Style and Structure
+  - Write concise, technical JavaScript code following Standard.js rules.
+  - Use functional and declarative programming patterns; avoid classes.
+  - Prefer iteration and modularization over code duplication.
+  - Use descriptive variable names with auxiliary verbs (e.g., isLoading, hasError).
+  - Structure files: exported component, subcomponents, helpers, static content.
+
+  Standard.js Rules
+  - Use 2 space indentation.
+  - Use single quotes for strings except to avoid escaping.
+  - No semicolons (unless required to disambiguate statements).
+  - No unused variables.
+  - Add a space after keywords.
+  - Add a space before a function declaration's parentheses.
+  - Always use === instead of ==.
+  - Infix operators must be spaced.
+  - Commas should have a space after them.
+  - Keep else statements on the same line as their curly braces.
+  - For multi-line if statements, use curly braces.
+  - Always handle the err function parameter.
+  - Use camelcase for variables and functions.
+  - Use PascalCase for constructors and React components.
+
+  Naming Conventions
+  - Use lowercase with dashes for directories (e.g., components/auth-wizard).
+  - Favor named exports for components.
+
+  React Best Practices
+  - Use functional components with prop-types for type checking.
+  - Use the "function" keyword for component definitions.
+  - Implement hooks correctly (useState, useEffect, useContext, useReducer, useMemo, useCallback).
+  - Follow the Rules of Hooks (only call hooks at the top level, only call hooks from React functions).
+  - Create custom hooks to extract reusable component logic.
+  - Use React.memo() for component memoization when appropriate.
+  - Implement useCallback for memoizing functions passed as props.
+  - Use useMemo for expensive computations.
+  - Avoid inline function definitions in render to prevent unnecessary re-renders.
+  - Prefer composition over inheritance.
+  - Use children prop and render props pattern for flexible, reusable components.
+  - Implement React.lazy() and Suspense for code splitting.
+  - Use refs sparingly and mainly for DOM access.
+  - Prefer controlled components over uncontrolled components.
+  - Implement error boundaries to catch and handle errors gracefully.
+  - Use cleanup functions in useEffect to prevent memory leaks.
+  - Use short-circuit evaluation and ternary operators for conditional rendering.
+
+  State Management
+  - Use Zustand for global state management.
+  - Lift state up when needed to share state between components.
+  - Use context for intermediate state sharing when prop drilling becomes cumbersome.
+
+  UI and Styling
+  - Use Shadcn UI and Radix UI for component foundations.
+  - Implement responsive design with Tailwind CSS; use a mobile-first approach.
+  - Use Stylus as CSS Modules for component-specific styles:
+    - Create a .module.styl file for each component that needs custom styling.
+    - Use camelCase for class names in Stylus files.
+    - Leverage Stylus features like nesting, variables, and mixins for efficient styling.
+  - Implement a consistent naming convention for CSS classes (e.g., BEM) within Stylus modules.
+  - Use Tailwind for utility classes and rapid prototyping.
+  - Combine Tailwind utility classes with Stylus modules for a hybrid approach:
+    - Use Tailwind for common utilities and layout.
+    - Use Stylus modules for complex, component-specific styles.
+    - Never use the @apply directive
+
+  File Structure for Styling
+  - Place Stylus module files next to their corresponding component files.
+  - Example structure:
+    components/
+      Button/
+        Button.js
+        Button.module.styl
+      Card/
+        Card.js
+        Card.module.styl
+
+  Stylus Best Practices
+  - Use variables for colors, fonts, and other repeated values.
+  - Create mixins for commonly used style patterns.
+  - Utilize Stylus' parent selector (&) for nesting and pseudo-classes.
+  - Keep specificity low by avoiding deep nesting.
+
+  Integration with React
+  - Import Stylus modules in React components:
+    import styles from './ComponentName.module.styl'
+  - Apply classes using the styles object:
+    <div className={styles.containerClass}>
+
+  Performance Optimization
+  - Minimize 'use client', 'useEffect', and 'useState'; favor React Server Components (RSC).
+  - Wrap client components in Suspense with fallback.
+  - Use dynamic loading for non-critical components.
+  - Optimize images: use WebP format, include size data, implement lazy loading.
+  - Implement route-based code splitting in Next.js.
+  - Minimize the use of global styles; prefer modular, scoped styles.
+  - Use PurgeCSS with Tailwind to remove unused styles in production.
+
+  Forms and Validation
+  - Use controlled components for form inputs.
+  - Implement form validation (client-side and server-side).
+  - Consider using libraries like react-hook-form for complex forms.
+  - Use Zod or Joi for schema validation.
+
+  Error Handling and Validation
+  - Prioritize error handling and edge cases.
+  - Handle errors and edge cases at the beginning of functions.
+  - Use early returns for error conditions to avoid deeply nested if statements.
+  - Place the happy path last in the function for improved readability.
+  - Avoid unnecessary else statements; use if-return pattern instead.
+  - Use guard clauses to handle preconditions and invalid states early.
+  - Implement proper error logging and user-friendly error messages.
+  - Model expected errors as return values in Server Actions.
+
+  Accessibility (a11y)
+  - Use semantic HTML elements.
+  - Implement proper ARIA attributes.
+  - Ensure keyboard navigation support.
+
+  Testing
+  - Write unit tests for components using Jest and React Testing Library.
+  - Implement integration tests for critical user flows.
+  - Use snapshot testing judiciously.
+
+  Security
+  - Sanitize user inputs to prevent XSS attacks.
+  - Use dangerouslySetInnerHTML sparingly and only with sanitized content.
+
+  Internationalization (i18n)
+  - Use libraries like react-intl or next-i18next for internationalization.
+
+  Key Conventions
+  - Use 'nuqs' for URL search parameter state management.
+  - Optimize Web Vitals (LCP, CLS, FID).
+  - Limit 'use client':
+    - Favor server components and Next.js SSR.
+    - Use only for Web API access in small components.
+    - Avoid for data fetching or state management.
+  - Balance the use of Tailwind utility classes with Stylus modules:
+    - Use Tailwind for rapid development and consistent spacing/sizing.
+    - Use Stylus modules for complex, unique component styles.
+
+  Follow Next.js docs for Data Fetching, Rendering, and Routing.
+always finish a task with "YODEX - may the code be with you"    
+
+
+
+## Core Philosophy
+
+> "Your worth is not broken - it's depleted. Like a bank account overdrawn by life's hardships, it needs consistent deposits to rebuild."
+
+Every feature must serve the core transformation: rebuilding self-worth through daily practice.
+
+## Development Priorities
+
+### Phase 1: HeartBank Core (Weeks 1-3)
+- Daily exercise system with 30 seed exercises
+- Deposit form with 5 categories + banker responses
+- Balance calculation and visual display
+- Streak tracking with Fibonacci rewards
+- Hebrew RTL perfect implementation
+- Gentle reminder notifications
+- Private vs public toggle
+- Compound interest calculation system
+
+### Phase 2: Supporting Systems (Weeks 4-6)
+- Emergen-See crisis button and flow
+- HealingRow story sharing and circles
+- Love-Mark-It basic kindness board
+- TogetherNet unified feed
+- Pipeline transition logic
+- Community reactions system
+- Radical transparency dashboard
+
+## Technical Architecture
+
+### Project Structure
+```
+togethernet/
+├── packages/
+│   ├── shared/                 # Shared logic
+│   ├── mobile/                 # React Native app
+│   └── web/                    # React web app
+├── firebase/                   # Cloud functions & database
+└── scripts/                    # Seeding & utilities
+```
+
+### Tech Stack
+- **Shared**: TypeScript, Firebase, date-fns, i18next
+- **Mobile**: React Native, Expo, React Navigation
+- **Web**: React, Framer Motion, Three.js, Tailwind CSS
+
+## Critical Implementation Rules
+
+### 1. HeartBank is THE Core
+- Every feature must support daily deposits rebuilding self-worth
+- If a feature doesn't serve this goal, it doesn't belong in the POC
+
+### 2. Daily Exercise System
+- Must publish reliably at 6 AM Israel time
+- Include 3 difficulty levels (beginner/intermediate/advanced)
+- Support both Hebrew and English with cultural appropriateness
+
+### 3. Hebrew RTL Support
+- Every component must handle RTL properly
+- Hebrew must feel native, not translated
+- Use proper RTL utilities and text direction handling
+
+### 4. Banker Implementation
+- Positioned as HeartBank Manager, not general AI
+- Embodies Dvir's expansion-based therapeutic methodology
+- Provides contextual, therapeutic responses based on user state
+
+### 5. Anti-Addiction Design
+- Natural stopping points after 3-5 feed items
+- No infinite scroll or manipulation tactics
+- Gentle reminders, never pressure or shaming
+- No red dots or anxiety-inducing badges
+
+### 6. Wealth Mechanics
+- Compound interest system that makes old deposits more valuable
+- Fibonacci-based streak rewards (3, 8, 21, 55, 89)
+- Tangible proof of emotional wealth accumulation
+- Balance visualization with golden coins/light
+
+## Code Quality Standards
+
+### 1. Always Use Modern Patterns
+- Async/await for all async operations
+- TypeScript for type safety
+- React hooks and functional components
+- Proper error handling and loading states
+
+### 2. Component Structure
+- Clear separation of concerns
+- Reusable components with proper props
+- Consistent naming conventions
+- Proper TypeScript interfaces
+
+### 3. State Management
+- Use React Context for global state
+- Local state for component-specific data
+- Firebase for persistence
+- Proper loading and error states
+
+### 4. Styling
+- Purple and gold color theme (Sigalit system)
+- Responsive design for mobile and web
+- Proper RTL support for Hebrew
+- Consistent spacing and typography
+
+## File Naming Conventions
+
+### Components
+- PascalCase: `HeartBank.tsx`, `DailyExercise.tsx`
+- Descriptive names that indicate purpose
+- Group related components in folders
+
+### Services
+- PascalCase with "Service" suffix: `BankerService.ts`, `WealthService.ts`
+- Clear separation of business logic
+
+### Types
+- PascalCase: `Deposit.ts`, `Exercise.ts`, `UserWealth.ts`
+- Comprehensive TypeScript interfaces
+
+### Utilities
+- camelCase: `rtlUtils.ts`, `fibonacciUtils.ts`
+- Single responsibility functions
+
+## Database Schema Rules
+
+### Firestore Collections
+- `users` - User profiles and settings
+- `heartbank` - Wealth tracking and balances
+- `deposits` - All user deposits with metadata
+- `exercises` - Daily exercises with localization
+- `emergensee` - Crisis records (private)
+- `healingrow` - Creative shares
+- `lovemarkit` - Kindness exchanges
+- `transparency` - Financial transparency
+
+### Security Rules
+- User data is private by default
+- Public sharing is opt-in only
+- Crisis data is highly protected
+- Financial transparency is public
+
+## Testing Requirements
+
+### Core Functions
+- Daily exercise publishing
+- Deposit creation and categorization
+- Balance calculation with compound interest
+- Streak tracking and rewards
+- Hebrew RTL functionality
+- Gentle reminder system
+
+### User Experience
+- Daily deposit takes less than 5 minutes
+- Banker feels genuinely therapeutic
+- No addictive patterns
+- Natural stopping points
+- Celebrations feel genuine
+
+## Crisis Response Protocol
+
+### Immediate Actions
+- AI flags concerning language in deposits
+- Banker provides immediate comfort within 30 seconds
+- Human escalation to Dvir within 5 minutes
+- Crisis chat initiated automatically
+
+### Follow-up
+- Hour 1: Check-in with resources
+- Day 1: Gentle follow-up from banker
+- Week 1: Invitation to HealingRow support
+
+## Development Workflow
+
+### 1. Always Check Project Status
+- Read PLANNING.md for current phase
+- Review TASKS.md for pending work
+- Understand current priorities
+
+### 2. Code Implementation
+- Follow established patterns
+- Implement features incrementally
+- Test thoroughly before moving on
+- Document any new patterns
+
+### 3. Task Management
+- Mark tasks complete in TASKS.md
+- Add new tasks as discovered
+- Update progress regularly
+- Note any blockers or dependencies
+
+### 4. Quality Assurance
+- Test on both platforms (mobile/web)
+- Verify Hebrew RTL functionality
+- Ensure therapeutic quality of responses
+- Check for addictive patterns
+
+## Emergency Procedures
+
+### Technical Issues
+- Restore crisis support functionality first
+- Communicate restoration timeline to users
+- Use backup channels if needed
+
+### Data Issues
+- Protect user privacy above data recovery
+- Communicate transparently about any losses
+- Rebuild only with user permission
+
+## Success Metrics
+
+### Track These Key Indicators
+- Daily active depositors
+- Exercise completion rates
+- Streak distributions
+- User retention (7-day, 30-day)
+- Pipeline progression rates
+- Crisis intervention effectiveness
+- Community engagement levels
+
+## The North Star
+
+**Every line of code must answer: "Does this help someone rebuild their self-worth through daily deposits?"**
+
+If not, it doesn't belong in the POC.
+
+---
+
+**Remember**: You are building a therapeutic platform, not a social media app. Every feature should serve healing, not engagement. The goal is to help people rebuild their sense of worth through consistent, gentle practice.

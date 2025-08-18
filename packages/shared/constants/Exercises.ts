@@ -4,52 +4,67 @@
 import { Exercise, ExerciseLibrary, LocalizedString } from '../types/Exercise'
 
 /**
- * Sample Exercise for Development - Gratitude Category
- * This is a placeholder until real exercises are uploaded
+ * Sample Exercise for Development - Based on Real Exercise Format
+ * Real Hebrew exercise: "תרגול יומי 1 – הפקדה ראשונה"
  */
 export const sampleExercise: Exercise = {
-  id: 'gratitude-textures-001',
+  id: 'daily-exercise-001',
   date: '2025-01-17',
-  category: 'gratitude',
-  theme: 'Sensory Awareness',
+  category: 'success',
+  theme: 'First Deposit',
   
-  exercise: {
-    en: 'Notice three textures that feel good today',
-    he: 'שימו לב לשלושה מרקמים שמרגישים טוב היום'
+  title: {
+    en: 'Daily Exercise 1 - First Deposit',
+    he: 'תרגול יומי 1 – הפקדה ראשונה'
+  },
+  
+  greeting: {
+    en: 'Good morning 💛',
+    he: 'בוקר טוב 💛'
+  },
+  
+  introduction: {
+    en: 'Today we start simple.\nStop for a moment, take a deep breath and ask yourself:',
+    he: 'היום נתחיל בפשטות.\nעצור לרגע, קח נשימה עמוקה ושאל את עצמך:'
+  },
+  
+  coreQuestion: {
+    en: 'What small good thing did I do for myself or someone else in the last 24 hours?',
+    he: 'איזה דבר קטן וטוב עשיתי בשבילי או בשביל מישהו אחר ב־24 השעות האחרונות?'
+  },
+  
+  guidance: {
+    en: 'It can be something really everyday. A smile you sent. A glass of water you drank on time. A brave conversation with a friend.\nIt doesn\'t need to be something big. The real value is found in the small details.',
+    he: 'זה יכול להיות משהו ממש יומיומי. חיוך ששלחת. כוס מים ששתית בזמן. שיחה אמיצה עם חבר.\nלא צריך משהו גדול. הערך האמיתי נמצא דווקא בפרטים הקטנים.'
+  },
+  
+  instruction: {
+    en: '✍️ Write now one sentence in the style:',
+    he: '✍️ כתוב עכשיו משפט אחד בסגנון:'
+  },
+  
+  template: {
+    en: 'I deposit in my self-worth bank that...',
+    he: 'אני מפקיד בבנק הערך העצמי שלי על כך ש...'
   },
   
   bankerIntro: {
-    en: 'Your nervous system remembers pleasure, let\'s help it notice what feels good...',
-    he: 'המערכת העצבים שלך זוכרת הנאה, בוא נעזור לה לשים לב למה שמרגיש טוב...'
-  },
-  
-  levels: {
-    beginner: {
-      en: 'Name one soft thing you touched today',
-      he: 'תן שם לדבר רך אחד שנגעת בו היום'
-    },
-    intermediate: {
-      en: 'Describe three different textures in detail - how they felt, where you found them',
-      he: 'תאר שלושה מרקמים שונים בפירוט - איך הם הרגישו, איפה מצאת אותם'
-    },
-    advanced: {
-      en: 'Write about how textures connect to memories and feelings of safety or comfort',
-      he: 'כתוב על איך מרקמים מתחברים לזיכרונות ולתחושות של ביטחון או נוחות'
-    }
+    en: 'Today we make our first gentle deposit together. Every small good action has value...',
+    he: 'היום אנחנו עושים את ההפקדה העדינה הראשונה יחד. לכל פעולה קטנה וטובה יש ערך...'
   },
   
   prompts: [
     {
-      en: 'What texture surprised you with its pleasantness today?',
-      he: 'איזה מרקם הפתיע אותך ברכות שלו היום?'
+      en: 'What small kindness did you show someone today?',
+      he: 'איזה חסד קטן הראת למישהו היום?'
     },
     {
-      en: 'Which fabric or surface made you feel most comfortable?',
-      he: 'איזה בד או משטח גרם לך להרגיש הכי נוח?'
+      en: 'What moment of self-care did you give yourself?',
+      he: 'איזה רגע של דאגה עצמית נתת לעצמך?'
     },
     {
-      en: 'What surface reminds you of safety or being cared for?',
-      he: 'איזה משטח מזכיר לך ביטחון או טיפול?'
+      en: 'What small victory can you acknowledge from today?',
+      he: 'איזה ניצחון קטן אתה יכול להכיר מהיום?'
     }
   ],
   
@@ -60,9 +75,9 @@ export const sampleExercise: Exercise = {
   },
   
   metadata: {
-    estimatedCompletionMinutes: 5,
-    difficultyScore: 3,
-    therapeuticFocus: ['anxiety', 'grounding', 'present-moment'],
+    estimatedCompletionMinutes: 3,
+    difficultyScore: 1,
+    therapeuticFocus: ['self-worth', 'recognition', 'daily-actions'],
     seasonalAdaptation: 'winter'
   },
   

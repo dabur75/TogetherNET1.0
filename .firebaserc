@@ -1,0 +1,10 @@
+{
+  "projects": {
+    "default": "togethernet-israel-poc",
+    "development": "togethernet-israel-poc",
+    "staging": "togethernet-israel-staging",
+    "production": "togethernet-israel-prod"
+  },
+  "targets": {},
+  "etags": {}
+}

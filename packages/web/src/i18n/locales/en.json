@@ -15,7 +15,7 @@
     "continue": "Continue",
     "back": "Back"
   },
-  
+
   "navigation": {
     "heartbank": "HeartBank",
     "studio": "HealingRow",
@@ -27,7 +27,7 @@
     "emergensee": "Emergen-See",
     "lovemarkit": "Love-Mark-It"
   },
-  
+
   "auth": {
     "signIn": "Sign In",
     "signOut": "Sign Out",
@@ -39,11 +39,12 @@
     "welcomeBack": "Welcome Back",
     "anonymous": "Continue Anonymously"
   },
-  
+
   "heartbank": {
     "title": "HeartBank",
     "subtitle": "Your emotional wealth grows here",
     "dailyExercise": "Today's Exercise",
+    "exerciseDeposit": "Exercise Deposit",
     "makeDeposit": "Make Deposit",
     "balance": "Current Balance",
     "streak": "Streak",
@@ -77,7 +78,7 @@
       }
     }
   },
-  
+
   "exercises": {
     "title": "Daily Exercise",
     "loading": "Loading today's exercise...",
@@ -90,7 +91,7 @@
     "complete": "Complete Exercise",
     "skip": "Skip for Today"
   },
-  
+
   "studio": {
     "title": "HealingRow",
     "subtitle": "Express your deposits through art",
@@ -101,7 +102,7 @@
       "meditationSpace": "Meditation Space"
     }
   },
-  
+
   "gallery": {
     "title": "Community Gallery",
     "subtitle": "Shared healing journeys",
@@ -118,14 +119,14 @@
       "light": "Light"
     }
   },
-  
+
   "treasury": {
     "title": "Treasury of Light",
     "subtitle": "Archive of transformative moments",
     "search": "Search treasury...",
     "noResults": "No treasures found"
   },
-  
+
   "crisis": {
     "button": "I need support",
     "title": "You're not alone",
@@ -134,7 +135,7 @@
     "contact": "Connect with therapist",
     "resources": "Crisis resources"
   },
-  
+
   "errors": {
     "generic": "Something went wrong",
     "network": "Network connection error",
@@ -142,7 +143,7 @@
     "unauthorized": "Please sign in to continue",
     "rateLimit": "Too many requests, please try again later"
   },
-  
+
   "accessibility": {
     "menu": "Menu",
     "close": "Close",
@@ -152,7 +153,7 @@
     "languageSwitch": "Switch to Hebrew",
     "darkMode": "Toggle dark mode"
   },
-  
+
   "therapeutic": {
     "worth": "Your worth is not broken - it's depleted",
     "rebuilding": "Let's rebuild it together, one deposit at a time",
